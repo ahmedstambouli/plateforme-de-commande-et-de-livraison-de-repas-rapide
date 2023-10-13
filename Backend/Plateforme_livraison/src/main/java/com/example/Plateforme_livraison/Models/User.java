@@ -3,11 +3,9 @@ package com.example.Plateforme_livraison.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,22 +17,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "name is required")
+    @NotBlank(message = " is required")
     private String name;
     @Email(message = "Invalid email address")
-    @NotBlank(message = "Email is required")
+    @NotBlank(message = " is required")
     private String email;
 
-    @NotBlank(message = "password is required")
+    @NotBlank(message = " is required")
     private String password;
 
-    @NotBlank(message = "role is required")
+    @NotBlank(message = " is required")
     private String role;
 
-    @NotBlank(message = "adress is required")
+    @NotBlank(message = " is required")
     private String address;
 
-    @NotBlank(message = "tel is required")
+    @NotBlank(message = " is required")
     private String tel;
 
 

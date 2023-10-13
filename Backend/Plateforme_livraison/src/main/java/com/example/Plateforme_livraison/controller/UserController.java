@@ -2,7 +2,7 @@ package com.example.Plateforme_livraison.controller;
 
 
 import com.example.Plateforme_livraison.Models.User;
-import com.example.Plateforme_livraison.UserRegistrationException;
+import com.example.Plateforme_livraison.service.UserRegistrationException;
 import com.example.Plateforme_livraison.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("public/users")
 public class UserController {
     private final UserService userService;
 
