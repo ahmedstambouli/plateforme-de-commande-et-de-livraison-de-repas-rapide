@@ -9,9 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.ErrorResponse;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -85,7 +87,7 @@ public class ParteanireController {
 
     }
 
-    
+    //cette methode get un partenaire avec id
       @GetMapping("/ListPartenaire/{id}")
       public ResponseEntity<Partenaire> getPartenaireById(@PathVariable Long id) {
 
@@ -98,19 +100,26 @@ public class ParteanireController {
         return new ResponseEntity<>(new Partenaire(),HttpStatus.INTERNAL_SERVER_ERROR);
       
       }
-     /* 
-     * 
-     * 
-     * @GetMapping
-     * public void updatePartenaire() {
-     * 
-     * }
-     * 
-     * @GetMapping
-     * public void deletePartenaire() {
-     * 
-     * }
-     */
+      
+      
+      @PutMapping("/updatepartenaire/{id}")
+      public ResponseEntity<String> updatePartenaire(@RequestBody Partenaire partenaire,@PathVariable Long id) {
+        try {
+            
+            return partenaireService.updatePartnaire(partenaire, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
+      
+      }
+     
+      @DeleteMapping("/deletePartenaire/{id}")
+      public ResponseEntity<String> deletePartenaire(@PathVariable Long id) {
+        return partenaireService.deletePartenaire(id);
+      
+     }
+     
 
     private static class ErrorResponse {
         private final String error;
