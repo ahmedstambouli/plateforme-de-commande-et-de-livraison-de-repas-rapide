@@ -2,7 +2,9 @@ package com.example.Plateforme_livraison.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -87,6 +89,53 @@ public class PartenaireService implements PartenaireServiceInterface {
         }
 
         return new ResponseEntity<>(new Partenaire(),HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+
+
+    @Override
+    public ResponseEntity<String> updatePartnaire(Partenaire partenaire, Long id) {
+        try {
+           Optional<Partenaire>  OptonalPartenair = partenaireRepository.findById(id);
+            if(OptonalPartenair.isPresent())
+            {
+                //return new ResponseEntity<>("Partenaire not found with Id "+id, HttpStatus.INTERNAL_SERVER_ERROR);
+                Partenaire partenaire2 =OptonalPartenair.get();
+                partenaire2.setName(partenaire.getName());
+                partenaire2.setEmail(partenaire.getEmail());
+                partenaire2.setAdresse(partenaire.getAdresse());
+                partenaire2.setPassword(passwordEncoder.encode(partenaire.getPassword()));
+                partenaire2.setTel(partenaire.getTel());
+                partenaire2.setLogo(partenaire.getLogo());
+                partenaireRepository.save(partenaire2);
+                return new ResponseEntity<>("Update successfuly ",HttpStatus.ACCEPTED);
+
+
+
+            }
+
+            return new ResponseEntity<String>("Partenaire not found with id : "+id,HttpStatus.NOT_FOUND);
+            
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<String>("something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+
+
+    @Override
+    public ResponseEntity<String> deletePartenaire(Long id) {
+        partenaireRepository.deleteById(id);
+        HttpHeaders headers =new HttpHeaders();
+        headers.add("Message", "Partenaire with id : "+id+"delete");
+        return ResponseEntity.noContent().headers(headers).build();
+
+
+
+    
     }
 
 
