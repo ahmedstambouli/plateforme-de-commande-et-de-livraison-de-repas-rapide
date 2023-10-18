@@ -1,0 +1,103 @@
+.container{
+    background-color: white;
+}
+.logo-container {
+    max-width: 100%;
+    height: auto; 
+}
+.is-invalid {
+    border: 1px solid red !important; 
+    background-color: #ffeeee; 
+    color: red; 
+    
+  }
+  .is-valid{
+    border: 1px solid !important; 
+    background-color:rgb(217, 246, 217); 
+    border-color: green !important;
+  }
+.logo-image {
+    max-width: 100%; 
+    height: auto; 
+}
+
+.center-image{
+    display: flex;
+    justify-items: center;
+    margin-top: 350px;
+
+
+}
+
+.form-container{
+display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    
+}
+.form-group1{
+    margin-left: 350px;
+    margin-top: 30px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+.pt{
+    margin-left: 180px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button.buttom {
+    background-color: #ff6f00;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 240px;
+    font-weight: bold;
+}
+
+.login-box {
+    margin-top: 60px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.buttom1{
+    background-color: #ff6f00;
+    display: flex;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 10px;
+}
+.buttom1 + .buttom1 {
+    margin-left: 10px; 
+}
+.links{
+    color: #ff6f00;
+    margin-left: 370px;
+    
+    
+}
+
