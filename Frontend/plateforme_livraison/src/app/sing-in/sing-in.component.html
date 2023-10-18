@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="logo-container col-6">
+            <div class="center-image">
+                <img class="logo-image" src="assets/image/tiktak.png">
+             </div>
+        </div>
+        <div class=" col-6">
+                <div class="form-group1 d-flex">
+                    <button class="buttom1 mt-5"   routerLink="/singin" type="submit">Sign In</button>
+                    <button class="buttom1 mt-5" routerLink="/signup" type="submit">Sign up</button>
+            </div>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-box">
+                <div class="form-group">
+                    <img class="pt" src="assets/image/petit.png">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input formControlName="Email" [ngClass]="{'is-invalid': submitted && registerForm.controls['Email'].errors ,'is-valid': submitted && !registerForm.controls['Email'].errors}" type="email" id="email" placeholder="Enter your email" >
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input formControlName="Password" [ngClass]="{'is-invalid': submitted && registerForm.controls['Password'].errors ,'is-valid': submitted && !registerForm.controls['Password'].errors}" type="password" id="password" placeholder="Password" >
+                </div>
+                <a class="links " routerLink="/signup"> you d'ont have an account?</a>
+                <div class="form-group">
+                    <button class="buttom" type="submit">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary">Primary</button>
