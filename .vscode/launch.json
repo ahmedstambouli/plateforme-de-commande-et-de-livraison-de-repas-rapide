@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PlateformeLivraisonApplication<Plateforme_livraison>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.Plateforme_livraison.PlateformeLivraisonApplication",
+            "projectName": "Plateforme_livraison",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
