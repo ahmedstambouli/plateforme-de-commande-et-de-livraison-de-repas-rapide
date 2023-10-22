@@ -4,25 +4,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
-import { RouterModule, Routes } from '@angular/router';
+import { SingInComponent } from './sing-in/sing-in.component';
+import { SingUpComponent } from './sing-up/sing-up.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingPartenaireModule } from './Partenaire/app-routing-partenaire.module'
 
 
 
 
-const routes: Routes = [
 
-  {path:'sidbar',component:SideBarComponent}
-];
+
 @NgModule({
   declarations: [
     AppComponent,
-    SideBarComponent
+    SingInComponent,
+    SingUpComponent,
+    SideBarComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingPartenaireModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
