@@ -1,0 +1,206 @@
+.blocknavbar{
+  margin: 0 0 0 68%;
+  margin-top: 1%;
+}
+#btndisconnect{
+  width: 40%;
+	height: 40px;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	background-size: 100%;
+	font-size: 1rem;
+	color: #EF6C00;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+  margin-left: 5%;
+  border: #EF6C00 solid 1px;
+  background-color: #ffffff;
+}
+
+#btndisable{
+  width: 40%;
+	height: 40px;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #D50000, #D50000, #D50000);
+	background-size: 100%;
+	font-size: 1rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+  margin-left: 3%;
+}
+
+
+
+
+
+.block{
+  margin-left: 18%;
+  margin-top: 10%;
+}
+
+
+
+.modale
+{
+ right: 0;
+ position: absolute;
+ margin-right: 10%;
+ margin-top: 5%;
+ border-radius: 20px;
+ width: 10%;
+ height: 45px;
+ margin-bottom: 10px;
+ color: #ffffff;
+ background-color: black;
+ font-weight: bold;
+}
+
+
+
+
+
+
+.col-3{
+  margin-top: 1%;
+}
+
+.updatebutton{
+  width: 40%;
+	height: 40px;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	background-size: 100%;
+	font-size: 14px;
+	color: #D50000;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	cursor: pointer;
+  border: #D50000 solid 1px;
+  background-color: #ffffff;
+}
+
+
+.Deletebutton{
+  width: 40%;
+	height: 40px;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	background-size: 100%;
+	font-size: 14px;
+	color: #ffffff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	cursor: pointer;
+  border: #D50000 solid 1px;
+  background-color: #D50000;
+}
+
+
+
+
+.card-body a{
+
+    color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));
+    text-decoration: underline;
+    margin-left: 5%;
+
+}
+
+
+
+.form-floating{
+  border: 1px solid;
+
+}
+
+
+
+/*! media screen !*/
+
+@media only screen and (max-width: 1201px) {
+  .row {
+    --bs-gutter-x: 8.5rem;
+  }
+
+  .block {
+    margin-left: 14%;
+    margin-top: 8%;
+}
+
+
+
+
+}
+
+
+@media only screen and (max-width: 1160px) {
+
+  .col-3 {
+    /* flex: 0 0 auto; */
+    width: 28%;
+    margin-top: 1%;
+}
+
+.block {
+  margin-left: 20%;
+  margin-top: 8%;
+}
+
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+
+
+.block {
+  margin-left: 30%;
+  margin-top: 8%;
+}
+
+.row {
+  --bs-gutter-x: 13.5rem;
+}
+
+}
+
+@media only screen and (max-width: 768px) {
+
+
+
+
+  .blocknavbar{
+    margin: 0 0 0 60%;
+    margin-top: 1%;
+  }
+
+  .col-3 {
+    width: 39%;
+    margin-top: 1%;
+    }
+
+
+    .block {
+      margin-left: 35%;
+      margin-top: 8%;
+    }
+
+
+  }
+
+
+
+
+
+
+
