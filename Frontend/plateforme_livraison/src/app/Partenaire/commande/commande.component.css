@@ -1,0 +1,38 @@
+.blocknavbar{
+  margin: 0 0 0 68%;
+  margin-top: 1%;
+}
+#btndisconnect{
+  width: 40%;
+	height: 40px;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	background-size: 100%;
+	font-size: 1rem;
+	color: #EF6C00;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+  margin-left: 5%;
+  border: #EF6C00 solid 1px;
+  background-color: #ffffff;
+}
+
+#btndisable{
+  width: 40%;
+	height: 40px;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #D50000, #D50000, #D50000);
+	background-size: 100%;
+	font-size: 1rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+  margin-left: 3%;
+}

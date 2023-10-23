@@ -9,7 +9,9 @@ import { SingUpComponent } from './sing-up/sing-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingPartenaireModule } from './Partenaire/app-routing-partenaire.module'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -30,6 +32,8 @@ import { AppRoutingPartenaireModule } from './Partenaire/app-routing-partenaire.
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingPartenaireModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
 
   providers: [],

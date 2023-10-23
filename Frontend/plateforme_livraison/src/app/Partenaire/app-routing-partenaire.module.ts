@@ -5,6 +5,7 @@ import {RouterModule, Routes } from '@angular/router';
 import { NaveBarPartenaireComponent } from './nave-bar-partenaire/nave-bar-partenaire.component';
 import { ProfilePartenaireComponent } from './profile-partenaire/profile-partenaire.component';
 import { ProductsComponent } from './products/products.component';
+import { CommandeComponent } from './commande/commande.component';
 
 
 const routes:Routes=[
@@ -12,7 +13,8 @@ const routes:Routes=[
   {path:"home" , component:HomeComponent,children:
     [
       { path:'ProfilePartenaire', component:ProfilePartenaireComponent},
-      {path:'ProductParteniare',component:ProductsComponent}
+      {path:'ProductParteniare',component:ProductsComponent},
+      {path:'CommandePartenaire',component:CommandeComponent}
 
 
     ]
@@ -25,7 +27,8 @@ const routes:Routes=[
     NaveBarPartenaireComponent,
     ProfilePartenaireComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    CommandeComponent
   ],
   imports: [
     CommonModule,
