@@ -15,4 +15,5 @@ export class Partenaire{
   tel!:string
   adresse!:string
   role!:string
+  logo!:string
 }

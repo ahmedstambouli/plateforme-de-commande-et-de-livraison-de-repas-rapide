@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppService } from '../app.service';
 import { Partenaire } from '../Partenaire/Partenaire';
+import { ToastrService } from 'ngx-toastr';
+import { min } from 'rxjs';
+
 
 @Component({
   selector: 'app-sing-up',
@@ -10,12 +13,12 @@ import { Partenaire } from '../Partenaire/Partenaire';
   styleUrls: ['./sing-up.component.css']
 })
 export class SingUpComponent implements OnInit {
-  registerForm!: FormGroup;
+  registerForm !: FormGroup;
   submitted = false;
 
 
 
-  constructor(private formBuilder: FormBuilder,private appserver:AppService ) { }
+  constructor(private formBuilder: FormBuilder,private appserver:AppService,private toast:ToastrService ) { }
   data:any;
   parte:Partenaire=new Partenaire()
 
@@ -26,12 +29,14 @@ export class SingUpComponent implements OnInit {
       Email: ['', Validators.required],
       Phone: ['', Validators.required ],
       Adresse: ['', Validators.required],
-      Password: ['', Validators.required],
+      Password: ['',Validators.required],
       Role:[''],
     });
 
 
   }
+
+
 
   onSubmit() {
 
@@ -39,8 +44,8 @@ export class SingUpComponent implements OnInit {
 
     this.submitted = true;
     //if (this.registerForm.invalid) {
-    //  return;
-   // }
+     //return;
+   //}
    // alert('Success');
     /*this.appserver.savePartenaire().subscribe({
       next:(res :any)=>{
@@ -54,24 +59,30 @@ export class SingUpComponent implements OnInit {
     this.parte.tel=this.registerForm.value.Phone;
     this.parte.adresse=this.registerForm.value.Adresse;
     this.parte.password=this.registerForm.value.Password;
+    this.parte.logo="logo.png";
     this.parte.role="partenaire";
-    console.log(this.parte)
+    //console.log(this.parte)
 
-    /*this.appserver.getAllPartenaire().subscribe({
-      next:(res :any)=>{
-        console.log(res,"response")
-      },
-      error:(err:any)=>{
-        console.log(err,'errors')
-      }
-    })*/
+
+
+
 
     this.appserver.savePartenaire(this.parte).subscribe({
       next:(res:any)=>{
-        console.log(res,"response")
+        //console.log(res,"response")
+        this.toast.success("register successfully")
+
       },
       error:(err:any)=>{
-        console.log(err,'errors')
+        this.data=err.status;
+        console.log(this.data)
+        console.log(err,"error")
+        if(this.data==400){
+          this.toast.error("please verify your input");
+        }
+        this.toast.error(err.error.message);
+
+
       }
     })
 
