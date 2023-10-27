@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-side-bar',
-  templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.css']
+  selector: 'app-side-bar-admin',
+  templateUrl: './side-bar-admin.component.html',
+  styleUrls: ['./side-bar-admin.component.css']
 })
-export class SideBarComponent {
-
+export class SideBarAdminComponent {
+ 
   public check =true
   public toggle(){
     if(this.check==true){

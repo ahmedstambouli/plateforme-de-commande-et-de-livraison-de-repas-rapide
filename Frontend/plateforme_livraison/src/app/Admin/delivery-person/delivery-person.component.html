@@ -1,0 +1,59 @@
+<div class="custom-page-margin">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-12">
+        <button type="button" class="btn btn-light ml-4" (click)="openModal()">Add Delivery Person</button>
+        <div class="input-group mb-3" style="margin-top: 20px;">
+          <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="search">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Number</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Email</th>
+          <th scope="col">PhoneNumber</th>
+          <th scope="col">Block Livreur</th>
+
+
+        </tr>
+      </thead>
+      <tbody> 
+          <tr *ngFor="let item of user|livreurPipe:search; let i = index">
+          <th scope="row">{{ i }}</th> <!-- Use double curly braces to interpolate the value of i -->
+          <td>{{ item.name }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.tel }}</td>
+          <td>
+            
+            <button type="button" class="btn btn-light" (click)="blockLivreur(item.id,item.name)" *ngIf="item.etat==1">Block</button>
+            <button type="button" class="btn btn-light" (click)="deblockLivreur(item.id,item.name)" *ngIf="item.etat==0">DeBlock</button>
+            <button type="button" class="btn btn-light" (click)="deleteLivreur(item.id,item.name)" >Delete</button>
+
+          </td>
+                   
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
