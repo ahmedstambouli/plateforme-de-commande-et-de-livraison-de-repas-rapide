@@ -45,5 +45,37 @@ public class LivreurService {
         }
     }
 
+
+    public User deblockLivreur(Long livreurId) throws Exception {
+        Optional<User> optionalLivreur = userRepository.findById(livreurId);
+
+        if (optionalLivreur.isPresent()) {
+            User livreur = optionalLivreur.get();
+            livreur.setEtat(1L);
+            userRepository.save(livreur); 
+            return livreur;
+        } else {
+            throw new Exception("Livreur not found with ID: " + livreurId);
+        }
+    }
+
+
+
+    public boolean isEmailAlreadyExists(String email) {
+        return userRepository.findByEmail(email) != null;
+    }
+    
+    public User deleteLivreur(Long livreurId) throws Exception {
+        Optional<User> optionalLivreur = userRepository.findById(livreurId);
+    
+        if (optionalLivreur.isPresent()) {
+            User livreur = optionalLivreur.get();
+            userRepository.delete(livreur);
+            return livreur;
+        } else {
+            throw new Exception("Livreur not found with ID: " + livreurId);
+        }
+    }
+    
     
 }
