@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppService } from '../app.service';
 import { Partenaire } from '../Partenaire/Partenaire';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sing-up',
@@ -15,7 +16,7 @@ export class SingUpComponent implements OnInit {
 
 
 
-  constructor(private formBuilder: FormBuilder,private appserver:AppService ) { }
+  constructor(private formBuilder: FormBuilder,private appserver:AppService ,private http:HttpClient) { }
   data:any;
   parte:Partenaire=new Partenaire()
 
@@ -29,11 +30,22 @@ export class SingUpComponent implements OnInit {
       Password: ['', Validators.required],
       Role:[''],
     });
-
+    const data={
+      "name":"oussema",
+      "email": "john.dkkkoe@ssldlsdzddddjjlkdjzsm",
+      "password": "secretPassword",
+      "address": "t",
+      "role":"admin",
+      "tel": "555-123-4567"
+    }
+    this.http.post('http://localhost:8085/public/Partenaire/RegisterPartenaire',data).subscribe(res=>{
+      console.log(res)
+    })
 
   }
 
   onSubmit() {
+
 
 
 

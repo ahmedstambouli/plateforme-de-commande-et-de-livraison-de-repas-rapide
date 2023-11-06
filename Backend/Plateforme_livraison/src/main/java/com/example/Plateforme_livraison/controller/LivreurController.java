@@ -30,12 +30,12 @@ public class LivreurController {
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getLivreurById(@PathVariable Long id) {
+    public Optional<User> getLivreurById(@PathVariable Integer id) {
         return livreurService.getLivreurById(id);
     }
 
     @PutMapping("/block/{livreurId}")
-    public User blockLivreur(@PathVariable Long livreurId) throws Exception {
+    public User blockLivreur(@PathVariable Integer livreurId) throws Exception {
         return livreurService.blockLivreur(livreurId);
     }
 }

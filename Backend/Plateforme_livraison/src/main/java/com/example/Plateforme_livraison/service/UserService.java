@@ -21,7 +21,7 @@ public class UserService {
 
     public User registerUser(User user) {
         // Check if the email is already in use
-        if (userRepository.findByEmail(user.getEmail()) != null) {
+        if (userRepository.findByemail(user.getEmail()) != null) {
             throw new UserRegistrationException("Email address is already in use. Please choose another email.");
         }
 

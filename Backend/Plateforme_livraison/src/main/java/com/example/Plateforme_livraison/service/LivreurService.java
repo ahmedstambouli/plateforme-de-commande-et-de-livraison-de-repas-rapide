@@ -27,12 +27,12 @@ public class LivreurService {
         return userRepository.findByRole("livreur");
     }
 
-    public Optional<User> getLivreurById(Long id) {
+    public Optional<User> getLivreurById(Integer id) {
         return userRepository.findById(id);
     }
 
 
-    public User blockLivreur(Long livreurId) throws Exception {
+    public User blockLivreur(Integer livreurId) throws Exception {
         Optional<User> optionalLivreur = userRepository.findById(livreurId);
 
         if (optionalLivreur.isPresent()) {
