@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="title">Add New Delivery Person</div>
+    <div class="content">
+      <form [formGroup]="deliveryPersonForm" (ngSubmit)="createLivreur()" >
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" [(ngModel)]="user.name" name="name" required         formControlName="name"  [ngClass]="{'is-invalid': submitted && deliveryPersonForm.controls['name'].errors ,'is-valid': submitted && !deliveryPersonForm.controls['name'].errors}"
+            >
+          </div>
+
+        
+
+          <div class="input-box">
+            <span class="details">Address</span>
+            <input type="text" placeholder="Enter your Address" [(ngModel)]="user.address" name="address" required      formControlName="address"  [ngClass]="{'is-invalid': submitted && deliveryPersonForm.controls['address'].errors ,'is-valid': submitted && !deliveryPersonForm.controls['address'].errors}"   
+            >
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" [(ngModel)]="user.email" name="email" required formControlName="email"  [ngClass]="{'is-invalid': submitted && deliveryPersonForm.controls['email'].errors ,'is-valid': submitted && !deliveryPersonForm.controls['email'].errors}">
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" [(ngModel)]="user.tel" name="tel" required         formControlName="tel" [ngClass]="{'is-invalid': submitted && deliveryPersonForm.controls['tel'].errors ,'is-valid': submitted && !deliveryPersonForm.controls['tel'].errors}"
+>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" placeholder="Enter your password" [(ngModel)]="user.password" name="password" required  formControlName="password" [ngClass]="{'is-invalid': submitted && deliveryPersonForm.controls['password'].errors ,'is-valid': submitted && !deliveryPersonForm.controls['password'].errors}">
+          </div>
+        </div>
+  
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>

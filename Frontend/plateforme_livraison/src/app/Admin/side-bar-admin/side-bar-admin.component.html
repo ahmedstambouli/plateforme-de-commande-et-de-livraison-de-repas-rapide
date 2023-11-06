@@ -1,0 +1,101 @@
+<div [ngClass]="{'sidebar':true,'active':check}" style="z-index: 1000;">
+    <div class="log_content">
+        <div class="logo">
+  
+            <div class="logo_name"><img src="../../assets/img/logoblanc.png"></div>
+        </div>
+        <i class='bx bx-menu-alt-left' id="btn" (click)="toggle()"></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a routerLink="">
+  
+                <i class='bx bx-building-house' style="color: #D24C51;"></i>
+  
+                <span class="links_name" style="color: #D24C51;">Profile</span>
+            </a>
+            <span class="tool">Profile</span>
+        </li>
+  
+  
+  
+        <li>
+            <a routerLink="/HomeAdmin/DeliveryPerson">
+              <i class='bx bx-run' style="color: #D24C51"></i>
+              <span class="links_name" style="color: #D24C51;"> Delivery person</span>
+            </a>
+            <span class="tool">Delivery person</span>
+        </li>
+  
+        <li>
+            <a routerLink="/">
+  
+              <i class='bx bx-child' style="color: #D24C51"></i>
+                <span class="links_name" style="color: #D24C51">Customer</span>
+            </a>
+            <span class="tool">Customer</span>
+        </li>
+  
+        <li>
+          <a routerLink="/">
+  
+            <i class='bx bxs-group' style="color: #D24C51"></i>
+              <span class="links_name" style="color: #D24C51">Partners</span>
+          </a>
+          <span class="tool">Partners</span>
+      </li>
+  
+      <li>
+        <a routerLink="/">
+  
+          <i class='bx bxs-food-menu' style="color: #D24C51"></i>
+            <span class="links_name" style="color: #D24C51">Orders</span>
+        </a>
+        <span class="tool">Orders</span>
+    </li>
+    <li>
+      <a routerLink="/">
+  
+        <i class='bx bxs-error-alt' style="color: #D24C51"></i>
+          <span class="links_name" style="color: #D24C51">Complaints</span>
+      </a>
+      <span class="tool">Complaints</span>
+  </li>
+  <li>
+    <a routerLink="/">
+  
+      <i class='bx bx-stats' style="color: #D24C51"></i>
+        <span class="links_name" style="color: #D24C51">Statistics</span>
+    </a>
+    <span class="tool">Statistics</span>
+  </li>
+  <li>
+    <a routerLink="/">
+  
+      <i class='bx bx-history' style="color: #D24C51"></i>
+        <span class="links_name" style="color: #D24C51">Histories</span>
+    </a>
+    <span class="tool">Histories</span>
+  </li>
+  
+    </ul>
+     <div class="profile_content" >
+        <div class="profile">
+            <div class="profile_details">
+                <div class="name_job">
+                    <div class="name" style="color: #ffffff;"></div>
+                    <div class="job" style="color: #ffffff;"></div>
+                </div>
+            </div>
+            <a >
+                <i class='bx bx-log-out-circle'id="log_out" style="color: aliceblue;"></i>
+  
+               </a>
+        </div>
+    </div>
+  </div>
+  <div>
+  
+    <router-outlet></router-outlet>
+  </div>
+  

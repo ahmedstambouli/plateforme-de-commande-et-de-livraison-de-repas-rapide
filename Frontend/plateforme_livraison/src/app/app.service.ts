@@ -23,4 +23,9 @@ export class AppService {
     {
       return this.http.get("http://localhost:8085/public/Partenaire/ListPartenaire");
     }
+
+
+
+    
+
 }
