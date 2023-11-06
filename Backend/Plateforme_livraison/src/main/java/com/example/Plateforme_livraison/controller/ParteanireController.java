@@ -38,6 +38,7 @@ public class ParteanireController {
         this.partenaireService = partenaireService;
     }
 
+    //this
     @Autowired
     private PartenaireRepository partenaireRepository;
 
