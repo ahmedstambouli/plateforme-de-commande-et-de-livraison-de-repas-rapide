@@ -62,7 +62,7 @@ export class SingUpComponent implements OnInit {
     this.parte.logo="logo.png";
     this.parte.role="partenaire";
     //console.log(this.parte)
-
+//aaa
 
 
 
@@ -84,6 +84,17 @@ export class SingUpComponent implements OnInit {
 
 
       }
+    })
+
+
+    this.appserver.getAllPartenaire().subscribe({
+      next:(res:any)=>{
+        console.log(res,"all partenaires")
+      },
+      error:(err:any)=>{
+        console.log(err,"erreur all partenaires")
+        }
+
     })
 
     //console.log(this.data);
