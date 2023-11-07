@@ -15,7 +15,7 @@ export class AppService {
 
     savePartenaire(partenaire: Object)
     {
-      return this .http.post("http://localhost:8084/public/RegisterPartenaire/",partenaire);
+      return this .http.post("http://localhost:8084/public/Partenaire/RegisterPartenaire",partenaire);
     }
 
 
@@ -23,4 +23,9 @@ export class AppService {
     {
       return this.http.get("http://localhost:8084/public/Partenaire/ListPartenaire");
     }
+
+
+
+    
+
 }

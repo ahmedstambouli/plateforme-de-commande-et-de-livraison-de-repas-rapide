@@ -21,6 +21,7 @@ import com.example.Plateforme_livraison.utilis.API;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Collections;
 import java.util.HashMap;
 
 @Service
@@ -85,31 +86,35 @@ public class AuthenticationService {
 
 
       public ResponseEntity<?> authenticate(AuthenticationRequest request) {
-    var user = repository.findByEmail(request.getEmail())
-            .orElseThrow();
-    if (user.isEnabled()) {
-        if (user.isAccountNonExpired()) {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            request.getEmail(),
-                            request.getPassword()
-                    )
-            );
-
-            var jwtToken = jwtService.generateToken(user, user.getId());
-            revokeAllUserTokens(user);
-            saveUserToken(user, jwtToken);
-            return ResponseEntity.ok(AuthenticationResponse.builder()
-                    .token(jwtToken)
-                    .user(user)
-                    .build());
+        var user = repository.findByEmail(request.getEmail())
+                .orElseThrow();
+    
+        if (user.isEnabled()) {
+            if (user.isAccountNonExpired()) {
+                authenticationManager.authenticate(
+                        new UsernamePasswordAuthenticationToken(
+                                request.getEmail(),
+                                request.getPassword()
+                        )
+                );
+    
+                var jwtToken = jwtService.generateToken(user, user.getId());
+                revokeAllUserTokens(user);
+                saveUserToken(user, jwtToken);
+                return ResponseEntity.ok(AuthenticationResponse.builder()
+                        .token(jwtToken)
+                        .user(user)
+                        .build());
+            } else {
+                return ResponseEntity.badRequest().body("Account is expired");
+            }
         } else {
-            return ResponseEntity.badRequest().body("Account is expired");
+            // Return a JSON response with an error message
+            String errorMessage = "Account is not active yet";
+            return ResponseEntity.badRequest().body(Collections.singletonMap("error", errorMessage));
         }
-    } else {
-        return ResponseEntity.badRequest().body("Account is not active yet");
     }
-}
+    
 private void revokeAllUserTokens(User user) {
     var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
     if (validUserTokens.isEmpty())

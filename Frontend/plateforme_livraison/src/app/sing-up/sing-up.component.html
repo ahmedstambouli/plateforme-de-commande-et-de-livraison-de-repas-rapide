@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row">
         <div class="logo-container col-6">
@@ -35,8 +36,9 @@
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input formControlName="Password" [ngClass]="{'is-invalid': submitted && registerForm.controls['Password'].errors ,'is-valid': submitted && !registerForm.controls['Password'].errors}" type="password" id="password" placeholder="Password" >
+                    <input formControlName="Password" [ngClass]="{'is-invalid': submitted && registerForm.controls['Password'].errors ,'is-valid': submitted && !registerForm.controls['Password'].errors}" type="password" id="password" placeholder="Password"  >
                 </div>
+
 
 
                 <a class="links" routerLink="/singin">Already have account?</a>
