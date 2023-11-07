@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.ErrorResponse;
 
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +29,9 @@ import jakarta.validation.Valid;
 import com.example.Plateforme_livraison.Models.Partenaire;
 
 @RestController
-@CrossOrigin(origins = "/")
+
+@CrossOrigin(origins = "http://localhost:4200")
+
 @RequestMapping("public/Partenaire")
 
 public class ParteanireController {

@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "/")
-
 @RequestMapping("public/users")
 public class UserController {
     private final UserService userService;
