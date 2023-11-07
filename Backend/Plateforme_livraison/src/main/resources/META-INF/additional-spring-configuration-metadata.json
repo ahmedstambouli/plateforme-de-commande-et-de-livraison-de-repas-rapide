@@ -1,8 +1,12 @@
-{
-  "properties": [
-    {
-      "name": "security.basic.enable",
-      "type": "java.lang.String",
-      "description": "Description for security.basic.enable."
+{"properties": [
+  {
+    "name": "security.basic.enable",
+    "type": "java.lang.String",
+    "description": "Description for security.basic.enable."
+  },
+  {
+    "name": "bezkoder.app.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'bezkoder.app.jwtSecret'"
   }
-] }
+]}

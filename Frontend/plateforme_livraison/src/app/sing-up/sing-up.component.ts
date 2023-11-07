@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,12 +17,16 @@ export class SingUpComponent implements OnInit {
   registerForm !: FormGroup;
   submitted = false;
 
+<<<<<<< HEAD
+  constructor(private formBuilder: FormBuilder,private http: HttpClient) { }
+=======
 
 
   constructor(private formBuilder: FormBuilder,private appserver:AppService,private toast:ToastrService ) { }
   data:any;
   parte:Partenaire=new Partenaire()
 
+>>>>>>> 6d9d40dc9fbfc36fd49ea54ef8ac385d8b14697f
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -32,8 +37,22 @@ export class SingUpComponent implements OnInit {
       Password: ['',Validators.required],
       Role:[''],
     });
+<<<<<<< HEAD
+    let obj={
+      "name":"oussema",
+      "email": "john.doe@sdddddddddddddddsldlsdzddddjjlkdjzsm",
+      "password": "secretPassword",
+      "address": "t",
+      "role":"admin",
+      "tel": "555-123-4567"
+  }
+this.http.post('http://localhost:8085/public/users/register',obj).subscribe(res=>{
+  console.log("Success",res)
+})
+=======
 
 
+>>>>>>> 6d9d40dc9fbfc36fd49ea54ef8ac385d8b14697f
   }
 
 

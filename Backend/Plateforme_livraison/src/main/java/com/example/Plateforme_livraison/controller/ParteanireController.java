@@ -8,6 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+<<<<<<< HEAD
+import org.springframework.web.ErrorResponse;
+=======
+>>>>>>> 6d9d40dc9fbfc36fd49ea54ef8ac385d8b14697f
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +31,11 @@ import jakarta.validation.Valid;
 import com.example.Plateforme_livraison.Models.Partenaire;
 
 @RestController
+<<<<<<< HEAD
+@CrossOrigin(origins = "/")
+=======
 @CrossOrigin(origins = "http://localhost:4200")
+>>>>>>> 6d9d40dc9fbfc36fd49ea54ef8ac385d8b14697f
 @RequestMapping("public/Partenaire")
 
 public class ParteanireController {
