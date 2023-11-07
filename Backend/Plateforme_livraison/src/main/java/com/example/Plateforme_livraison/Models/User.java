@@ -36,6 +36,12 @@ public class User {
     private String tel;
 
 
+    
+    private Long etat;
+
+    
+
+
 
 
 
