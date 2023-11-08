@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36bc7c57-dcf1-4bd1-b06e-2bfdce75fdeb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_3_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_6_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_6_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_6_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_test_6_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_6_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/service/CustomUserDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plateforme_livraison/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/UserRegistrationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/service/UserRegistrationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/PlateformeLivraisonApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/PlateformeLivraisonApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plateforme_livraison/src/main/resources/META-INF/additional-spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plateforme_livraison/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Plateforme_livraison/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,6 +70,16 @@
     <configuration name="PlateformeLivraisonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Plateforme_livraison" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Plateforme_livraison.PlateformeLivraisonApplication" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Plateforme_livraison" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -102,6 +102,9 @@
       <workItem from="1697227629782" duration="40000" />
       <workItem from="1697227833110" duration="16000" />
       <workItem from="1697228549524" duration="9505000" />
+      <workItem from="1697572498270" duration="311000" />
+      <workItem from="1697572845226" duration="865000" />
+      <workItem from="1697804047225" duration="34000" />
     </task>
     <servers />
   </component>
@@ -118,5 +121,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Backend$PlateformeLivraisonApplication.ic" NAME="PlateformeLivraisonApplication Coverage Results" MODIFIED="1697572569165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
