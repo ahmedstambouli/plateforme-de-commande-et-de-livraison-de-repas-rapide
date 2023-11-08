@@ -17,7 +17,6 @@ import { AdminModelModule } from './Admin/admin-model.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { ToastrModule } from 'ngx-toastr';
@@ -32,8 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
     SingInComponent,
     SingUpComponent,
-    
-    
+
+
 
 
   ],
@@ -50,7 +49,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    
+
 
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

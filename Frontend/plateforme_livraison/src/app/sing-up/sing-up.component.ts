@@ -103,7 +103,7 @@ this.http.post('http://localhost:8085/public/users/register',obj).subscribe(res=
     this.parte.logo="logo.png";
     this.parte.role="partenaire";
     //console.log(this.parte)
-
+//aaa
 
 
 
@@ -125,6 +125,17 @@ this.http.post('http://localhost:8085/public/users/register',obj).subscribe(res=
 
 
       }
+    })
+
+
+    this.appserver.getAllPartenaire().subscribe({
+      next:(res:any)=>{
+        console.log(res,"all partenaires")
+      },
+      error:(err:any)=>{
+        console.log(err,"erreur all partenaires")
+        }
+
     })
 
     //console.log(this.data);

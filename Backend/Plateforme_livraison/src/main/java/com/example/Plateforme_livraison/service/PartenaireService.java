@@ -6,15 +6,15 @@ import java.util.Optional;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.Plateforme_livraison.Models.Partenaire;
-import com.example.Plateforme_livraison.Models.User;
+
 import com.example.Plateforme_livraison.repository.PartenaireRepository;
-import com.example.Plateforme_livraison.service.PartenaireServiceInterface;
+
 
 @Service
 public class PartenaireService implements PartenaireServiceInterface {
