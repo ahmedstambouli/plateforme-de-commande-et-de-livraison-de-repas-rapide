@@ -8,7 +8,7 @@ import com.example.Plateforme_livraison.Models.Produit;
 
 @Repository
 public interface ProduitRepository extends JpaRepository<Produit,Integer> {
-        List<Produit> findByPartenaireId(long id);
+       List<Produit>  findByPartenaireId(long id);
 
 
 

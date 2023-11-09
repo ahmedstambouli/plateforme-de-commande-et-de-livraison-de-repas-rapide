@@ -38,24 +38,24 @@ public ResponseEntity<String> createLivreur(@RequestBody User livreur) {
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getLivreurById(@PathVariable Long id) {
+    public Optional<User> getLivreurById(@PathVariable Integer id) {
         return livreurService.getLivreurById(id);
     }
 
     @PutMapping("/block/{livreurId}")
-    public User blockLivreur(@PathVariable Long livreurId) throws Exception {
+    public User blockLivreur(@PathVariable Integer livreurId) throws Exception {
         return livreurService.blockLivreur(livreurId);
     }
 
 
     @PutMapping("/deblock/{livreurId}")
-    public User deblockLivreur(@PathVariable Long livreurId) throws Exception {
+    public User deblockLivreur(@PathVariable Integer livreurId) throws Exception {
         return livreurService.deblockLivreur(livreurId);
     }
 
 
     @DeleteMapping("/delete/{livreurId}")
-public ResponseEntity<String> deleteLivreur(@PathVariable Long livreurId) {
+public ResponseEntity<String> deleteLivreur(@PathVariable Integer livreurId) {
     try {
         livreurService.deleteLivreur(livreurId);
         return new ResponseEntity<>("Livreur deleted successfully", HttpStatus.OK);

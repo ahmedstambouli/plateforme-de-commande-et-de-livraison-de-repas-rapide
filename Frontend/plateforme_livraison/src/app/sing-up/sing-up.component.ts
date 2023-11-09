@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ export class SingUpComponent implements OnInit {
 
 
 
+
   constructor(private formBuilder: FormBuilder,private appserver:AppService,private toast:ToastrService ) { }
   data:any;
   parte:Partenaire=new Partenaire()
@@ -33,12 +35,15 @@ export class SingUpComponent implements OnInit {
       Role:[''],
     });
 
-
   }
 
 
 
+
+
+
   onSubmit() {
+
 
 
 

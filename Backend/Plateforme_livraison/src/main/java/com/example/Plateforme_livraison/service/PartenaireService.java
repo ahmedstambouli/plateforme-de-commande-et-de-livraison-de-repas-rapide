@@ -6,30 +6,26 @@ import java.util.Optional;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.Plateforme_livraison.Models.Partenaire;
 
 import com.example.Plateforme_livraison.repository.PartenaireRepository;
 
-
 @Service
 public class PartenaireService implements PartenaireServiceInterface {
 
-
     private final PartenaireRepository partenaireRepository;
     private final BCryptPasswordEncoder passwordEncoder;
-
 
     public PartenaireService(PartenaireRepository partenaireRepository, BCryptPasswordEncoder passwordEncoder) {
         this.partenaireRepository = partenaireRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
-
 
     public Partenaire registerUser(Partenaire partenaire) {
         // Check if the email is already in use
@@ -49,58 +45,50 @@ public class PartenaireService implements PartenaireServiceInterface {
         return partenaireRepository.save(partenaire);
     }
 
-
     private boolean isUserDataValid(Partenaire partenaire) {
         // Perform data validation here
         // You can add more checks and validation logic
         return partenaire != null && partenaire.getName() != null && partenaire.getPassword() != null;
     }
 
-
-
     @Override
     public ResponseEntity<List<Partenaire>> getAllPartenaire() {
 
         try {
-            List<Partenaire> lisetPartenaires =partenaireRepository.findAll().stream().toList();
+            List<Partenaire> lisetPartenaires = partenaireRepository.findAll().stream().toList();
             return ResponseEntity.ok(lisetPartenaires);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return new ResponseEntity<>(new ArrayList<>(),HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-
 
     @Override
     public ResponseEntity<Partenaire> getAllPartenaireById(Long id) {
         try {
-            Partenaire partenaire=partenaireRepository.findById(id).orElse(null);
+            Partenaire partenaire = partenaireRepository.findById(id).orElse(null);
 
-            if(partenaire ==null)
-            {
+            if (partenaire == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>(partenaire,HttpStatus.OK);
-            
+            return new ResponseEntity<>(partenaire, HttpStatus.OK);
+
         } catch (Exception e) {
-                e.printStackTrace();
+            e.printStackTrace();
         }
 
-        return new ResponseEntity<>(new Partenaire(),HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new Partenaire(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-
 
     @Override
     public ResponseEntity<String> updatePartnaire(Partenaire partenaire, Long id) {
         try {
-           Optional<Partenaire>  OptonalPartenair = partenaireRepository.findById(id);
-            if(OptonalPartenair.isPresent())
-            {
-                //return new ResponseEntity<>("Partenaire not found with Id "+id, HttpStatus.INTERNAL_SERVER_ERROR);
-                Partenaire partenaire2 =OptonalPartenair.get();
+            Optional<Partenaire> OptonalPartenair = partenaireRepository.findById(id);
+            if (OptonalPartenair.isPresent()) {
+                // return new ResponseEntity<>("Partenaire not found with Id "+id,
+                // HttpStatus.INTERNAL_SERVER_ERROR);
+                Partenaire partenaire2 = OptonalPartenair.get();
                 partenaire2.setName(partenaire.getName());
                 partenaire2.setEmail(partenaire.getEmail());
                 partenaire2.setAdresse(partenaire.getAdresse());
@@ -108,15 +96,11 @@ public class PartenaireService implements PartenaireServiceInterface {
                 partenaire2.setTel(partenaire.getTel());
                 partenaire2.setLogo(partenaire.getLogo());
                 partenaireRepository.save(partenaire2);
-                return new ResponseEntity<>("Update successfuly ",HttpStatus.ACCEPTED);
-
-
+                return new ResponseEntity<>("Update successfuly ", HttpStatus.ACCEPTED);
 
             }
 
-            return new ResponseEntity<String>("Partenaire not found with id : "+id,HttpStatus.NOT_FOUND);
-            
-
+            return new ResponseEntity<String>("Partenaire not found with id : " + id, HttpStatus.NOT_FOUND);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,36 +108,35 @@ public class PartenaireService implements PartenaireServiceInterface {
         return new ResponseEntity<String>("something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-
-
     @Override
     public ResponseEntity<String> deletePartenaire(Long id) {
         partenaireRepository.deleteById(id);
-        HttpHeaders headers =new HttpHeaders();
-        headers.add("Message", "Partenaire with id : "+id+"delete");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Message", "Partenaire with id : " + id + "delete");
         return ResponseEntity.noContent().headers(headers).build();
 
-
-
-    
     }
 
+   
 
 
+@Override
+    public ResponseEntity<Partenaire> loginUser(String email, String password) {
+        Partenaire p = partenaireRepository.findByEmail(email);
     
-
-
-
-
+        if (p == null) {
+            return new ResponseEntity<Partenaire>(HttpStatus.UNAUTHORIZED);
+        }
     
-
-
-
+        String storedPassword = p.getPassword();
     
-
+        if (!passwordEncoder.matches(password, storedPassword)) {
+            System.out.println();
+            return new ResponseEntity<Partenaire>(HttpStatus.UNAUTHORIZED);
+        }
     
-
+        return new ResponseEntity<Partenaire>(p, null, HttpStatus.OK);
+    }
     
-
 
 }

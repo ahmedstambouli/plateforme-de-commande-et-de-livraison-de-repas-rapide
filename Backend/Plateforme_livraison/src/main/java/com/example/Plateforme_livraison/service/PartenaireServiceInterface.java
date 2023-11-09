@@ -16,4 +16,9 @@ public interface PartenaireServiceInterface {
 
     ResponseEntity<String> deletePartenaire(Long id);
 
+   
+    ResponseEntity<Partenaire> loginUser(String email,String password);
+
+
+
 }
