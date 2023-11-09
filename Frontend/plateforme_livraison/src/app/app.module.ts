@@ -40,7 +40,6 @@ import { ToastrModule } from 'ngx-toastr';
 
     AdminModelModule,
     FormsModule,
-    BrowserAnimationsModule,
     MatDialogModule,
 
 
