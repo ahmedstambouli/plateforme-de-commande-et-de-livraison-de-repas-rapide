@@ -121,7 +121,7 @@ public class ParteanireController {
     }
 
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<Partenaire> LoginPartenaire(@RequestParam("email") String email,@RequestParam("password") String password) {
       return  partenaireService.loginUser(email,password);
 
