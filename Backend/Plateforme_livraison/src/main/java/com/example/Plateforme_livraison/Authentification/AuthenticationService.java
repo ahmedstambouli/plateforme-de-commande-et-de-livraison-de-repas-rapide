@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +63,7 @@ public class AuthenticationService {
         jwtClaims.put("id", savedUser.getId());
         var jwtToken = jwtService.generateToken(jwtClaims, savedUser);
         
-        saveUserToken(savedUser, jwtToken);
+        saveUserToken1(savedUser, jwtToken);
         
         return ResponseEntity.ok().body(AuthenticationResponse.builder()
             .token(jwtToken)
@@ -72,7 +73,20 @@ public class AuthenticationService {
         return API.getResponseEntity("email already exists", HttpStatus.BAD_REQUEST);
     }
     }
-    private void saveUserToken(User user, String jwtToken) {
+    private void saveUserToken(User user, String jwtToken, Role role, Long etat) {
+        var token = Token.builder()
+            .user(user)
+            .token(jwtToken)
+            .role(role)
+            .etat(etat)
+            .tokenType(TokenType.BEARER)
+            .expired(false)
+            .revoked(false)
+            .build();
+        tokenRepository.save(token);
+    }
+    
+    private void saveUserToken1(User user, String jwtToken) {
         var token = Token.builder()
             .user(user)
             .token(jwtToken)
@@ -82,7 +96,6 @@ public class AuthenticationService {
             .build();
         tokenRepository.save(token);
       }
-
 
       public ResponseEntity<?> authenticate(AuthenticationRequest request) {
         var user = repository.findByEmail(request.getEmail())
@@ -96,10 +109,11 @@ public class AuthenticationService {
                                 request.getPassword()
                         )
                 );
+             
     
-                var jwtToken = jwtService.generateToken(user, user.getId());
+                var jwtToken = jwtService.generateToken(user, user.getId(), user.getRole(), user.getEtat());
                 revokeAllUserTokens(user);
-                saveUserToken(user, jwtToken);
+                saveUserToken(user, jwtToken, user.getRole(), user.getEtat());
                 return ResponseEntity.ok(AuthenticationResponse.builder()
                         .token(jwtToken)
                  //       .user(user)

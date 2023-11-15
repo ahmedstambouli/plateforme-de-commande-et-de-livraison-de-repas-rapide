@@ -16,7 +16,7 @@ public interface UserInt {
 
     @POST("users/register")
     Call<RegisterResponse> registerUser(@Body User user);
-    @POST("users/login")
+    @POST("login")
     Call<LoginResponse> login(@Body LoginRequest login);
 
 }

@@ -1,5 +1,6 @@
 package com.example.Plateforme_livraison.Authentification.Token;
 
+import com.example.Plateforme_livraison.Models.Role;
 import com.example.Plateforme_livraison.Models.User;
 
 import jakarta.persistence.Column;
@@ -28,7 +29,8 @@ public class Token {
 
   @Column(unique = true)
   public String token;
-
+  public Role role;
+  private Long etat;
   @Enumerated(EnumType.STRING)
   public TokenType tokenType = TokenType.BEARER;
 
