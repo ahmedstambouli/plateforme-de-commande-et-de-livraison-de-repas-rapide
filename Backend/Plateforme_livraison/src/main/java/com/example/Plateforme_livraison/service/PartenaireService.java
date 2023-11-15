@@ -96,7 +96,7 @@ public class PartenaireService implements PartenaireServiceInterface {
                 partenaire2.setTel(partenaire.getTel());
                 partenaire2.setLogo(partenaire.getLogo());
                 partenaireRepository.save(partenaire2);
-                return new ResponseEntity<>("Update successfuly ", HttpStatus.ACCEPTED);
+                return new ResponseEntity<String>("update successfuly ", HttpStatus.ACCEPTED);
 
             }
 
@@ -107,6 +107,9 @@ public class PartenaireService implements PartenaireServiceInterface {
         }
         return new ResponseEntity<String>("something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+
+    
 
     @Override
     public ResponseEntity<String> deletePartenaire(Long id) {
@@ -151,18 +154,49 @@ public class PartenaireService implements PartenaireServiceInterface {
         Partenaire p = partenaireRepository.findByEmail(email);
     
         if (p == null) {
+                        System.out.println(p);
+
             return new ResponseEntity<Partenaire>(HttpStatus.UNAUTHORIZED);
         }
     
         String storedPassword = p.getPassword();
     
         if (!passwordEncoder.matches(password, storedPassword)) {
-            System.out.println();
+            System.out.println(password);
+            System.out.println(storedPassword);
+
             return new ResponseEntity<Partenaire>(HttpStatus.UNAUTHORIZED);
         }
     
         return new ResponseEntity<Partenaire>(p, null, HttpStatus.OK);
     }
+
+@Override
+public ResponseEntity<String> updatePartnairesonpassword(Partenaire partenaire, Long id) {
+
+      try {
+            Optional<Partenaire> OptonalPartenair = partenaireRepository.findById(id);
+            if (OptonalPartenair.isPresent()) {
+                // return new ResponseEntity<>("Partenaire not found with Id "+id,
+                // HttpStatus.INTERNAL_SERVER_ERROR);
+                Partenaire partenaire2 = OptonalPartenair.get();
+                partenaire2.setName(partenaire.getName());
+                partenaire2.setEmail(partenaire.getEmail());
+                partenaire2.setAdresse(partenaire.getAdresse());
+                partenaire2.setTel(partenaire.getTel());
+                partenaire2.setLogo(partenaire.getLogo());
+                partenaireRepository.save(partenaire2);
+                return new ResponseEntity<String>("update successfuly ", HttpStatus.ACCEPTED);
+
+            }
+
+            return new ResponseEntity<String>("Partenaire not found with id : " + id, HttpStatus.NOT_FOUND);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<String>("something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
+}
     
 
 }

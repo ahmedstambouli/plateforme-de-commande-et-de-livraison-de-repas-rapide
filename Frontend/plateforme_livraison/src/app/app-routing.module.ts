@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'singin', component:SingInComponent},
   { path: 'signup',component:SingUpComponent},
 
-  
+
 ];
 
 @NgModule({

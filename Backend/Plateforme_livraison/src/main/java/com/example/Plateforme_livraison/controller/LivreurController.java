@@ -21,7 +21,7 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("public/livreurs")
-public class LivreurController {
+public class LivreurController  {
 
     private final LivreurService livreurService;
     private final UserService userService; // Injectez le service UserService
