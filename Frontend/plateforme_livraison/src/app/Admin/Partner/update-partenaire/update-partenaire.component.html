@@ -1,0 +1,28 @@
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
+    <form style="width: 500px;" (ngSubmit)="updatePartenaire(PartnerData.id,PartnerData)">
+        <legend style="text-align: center; margin-bottom: 20px;">Update Partner</legend>
+  
+      <div class="mb-3">
+        <label for="Nom" class="form-label">Name</label>
+        <input type="text" class="form-control" id="Nom" [(ngModel)]="PartnerData.name" name="name">
+
+      </div>
+  
+      <div class="mb-3">
+        <label for="Prénom" class="form-label">Address</label>
+        <input type="text" class="form-control" id="Prenom" [(ngModel)]="PartnerData.adresse" name="adresse">
+      </div>
+  
+      <div class="mb-3">
+        <label for="Classe" class="form-label">Email</label>
+        <input type="email" class="form-control" id="Classe" [(ngModel)]="PartnerData.email" name="email">
+      </div>
+      <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="number" class="form-control" id="Email" [(ngModel)]="PartnerData.tel" name="tel">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  

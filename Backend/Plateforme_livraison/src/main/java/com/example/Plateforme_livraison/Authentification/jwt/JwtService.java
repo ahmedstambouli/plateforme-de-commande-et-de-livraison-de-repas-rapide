@@ -17,6 +17,8 @@ import javax.crypto.SecretKey;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.example.Plateforme_livraison.Models.Role;
+
 @Service
 public class JwtService {
 SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
@@ -32,14 +34,19 @@ SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     return claimsResolver.apply(claims);
   }
 
-  public String generateToken(UserDetails userDetails ,Integer id  ) {
-    return generateToken(new HashMap<>(id), userDetails);
-  }
+  public String generateToken(UserDetails userDetails, Integer id, Role role, Long long1) {
+    Map<String, Object> claims = new HashMap<>();
+    claims.put("id", id);
+    claims.put("role", role);
+    claims.put("etat", long1);
 
-  public String generateToken(
-      Map<String, Object> extraClaims,
-      UserDetails userDetails
-  ) {
+    return generateToken(claims, userDetails);
+}
+
+public String generateToken(
+    Map<String, Object> extraClaims,
+    UserDetails userDetails
+) {
     return Jwts
         .builder()
         .setClaims(extraClaims)
@@ -48,7 +55,8 @@ SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
         .setExpiration(new Date(System.currentTimeMillis() + 100000 * 60 * 24))
         .signWith(getSignInKey(), SignatureAlgorithm.HS256)
         .compact();
-  }
+}
+
 
   public boolean isTokenValid(String token, UserDetails userDetails) {
     final String username = extractUsername(token);

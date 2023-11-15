@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -43,7 +43,7 @@
                 app:layout_constraintVertical_bias="0.152" />
 
             <EditText
-                android:id="@+id/editTextText2"
+                android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -59,7 +59,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/login_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -72,7 +72,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+                app:layout_constraintTop_toBottomOf="@+id/login" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -83,7 +83,7 @@
                 android:text="Forgot Password"
                 android:textColor="#FF5722"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/login_pwd" />
 
             <Button
                 android:id="@+id/signinbtn"
@@ -99,7 +99,7 @@
                 app:layout_constraintVertical_bias="0.172" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/signup"
                 android:layout_width="287dp"
                 android:layout_height="55dp"
                 android:backgroundTint="#FF5722"
