@@ -1,14 +1,19 @@
 package com.example.Plateforme_livraison.service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import org.apache.tomcat.util.file.ConfigurationSource.Resource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.Plateforme_livraison.Models.Partenaire;
 import com.example.Plateforme_livraison.Models.Produit;
 import com.example.Plateforme_livraison.repository.ProduitRepository;
+import org.springframework.http.MediaType;
 
 
 
@@ -47,7 +53,7 @@ public class ProduitSrevice {
     }
 
 
-    public String uploadImage(String path, MultipartFile file,String nom,String quantity,String catégori,Partenaire pa) throws IOException {
+    public String uploadImage(String path, MultipartFile file,String nom,String quantity,String categori,Partenaire pa) throws IOException {
         String name = file.getOriginalFilename();
 
         // Générer un nom de fichier aléatoire
@@ -70,7 +76,7 @@ public class ProduitSrevice {
         Produit uploadedFile = new Produit();
         uploadedFile.setFileName(fileName);
         uploadedFile.setName(nom);
-        uploadedFile.setCatégori(catégori);
+        uploadedFile.setCategori(categori);
         uploadedFile.setQuantity(quantity);
         uploadedFile.setPartenaire(pa);
         produitRepository.save(uploadedFile);
@@ -78,7 +84,7 @@ public class ProduitSrevice {
     }
 
 
-    public String updateImage(String path, MultipartFile newImage, String nom, String quantity, String catégori, int produitId) throws IOException {
+    public String updateImage(String path, MultipartFile newImage, String nom, String quantity, String categori, int produitId) throws IOException {
         Optional<Produit> existingProduitOptional = produitRepository.findById(produitId);
     
         if (existingProduitOptional.isPresent()) {
@@ -103,7 +109,7 @@ public class ProduitSrevice {
     
             existingProduit.setFileName(fileName);
             existingProduit.setName(nom);
-            existingProduit.setCatégori(catégori);
+            existingProduit.setCategori(categori);
             existingProduit.setQuantity(quantity);
             produitRepository.save(existingProduit);
             return fileName;
@@ -166,23 +172,33 @@ public class ProduitSrevice {
 
     
 
+    private String imageDirectoryPath="images/";
 
-    /* 
-    public List<String> getAllImages(String path) {
-        File folder = new File(path);
-        File[] files = folder.listFiles();
-        List<String> imageNames = new ArrayList<>();
+    public ResponseEntity<?> getProductImageById(int id) throws IOException {
+        Optional<Produit> produitOptional = produitRepository.findById(id);
 
-        if (files != null) {
-            for (File file : files) {
-                if (file.isFile()) {
-                    imageNames.add(file.getName());
+        if (produitOptional.isPresent()) {
+            Produit produit = produitOptional.get();
+            String fileName = produit.getFileName();
+
+            if (fileName != null) {
+                Path filePath = Paths.get(imageDirectoryPath, fileName);
+                File file = filePath.toFile();
+
+                if (file.exists()) {
+                    InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+
+                    return ResponseEntity.ok()
+                            .header(HttpHeaders.CONTENT_DISPOSITION, "inline;filename=" + file.getName())
+                            .contentType(MediaType.IMAGE_JPEG) // Adjust based on your image type
+                            .body(resource);
                 }
             }
         }
 
-        return imageNames;
+        return ResponseEntity.notFound().build();
     }
-    */
+    
+    
 
 }

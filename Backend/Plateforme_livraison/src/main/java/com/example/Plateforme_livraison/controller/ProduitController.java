@@ -40,12 +40,12 @@ public class ProduitController {
     @RequestMapping(value = "/AddProduit", method = RequestMethod.POST, headers = "accept=Application/json")
     public ResponseEntity<FileResponse> fileUpload(
             @RequestParam("image") MultipartFile image, @RequestParam("name") String name,
-            @RequestParam("quantity") String quantity, @RequestParam("catégori") String catégori,
+            @RequestParam("quantity") String quantity, @RequestParam("categori") String categori,
             @RequestParam("idp") Partenaire pa) {
 
         String fileName = null;
         try {
-            fileName = this.produitSrevice.uploadImage(path, image, name, quantity, catégori, pa);
+            fileName = this.produitSrevice.uploadImage(path, image, name, quantity, categori, pa);
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(new FileResponse(null, "ERREURR fichier non envoyer"), HttpStatus.OK);
@@ -58,12 +58,12 @@ public class ProduitController {
     @RequestMapping(value = "/{id}/UpdateProduit", method = RequestMethod.PUT, headers = "accept=Application/json")
     public ResponseEntity<?> UpdateProduit(
             @RequestParam("image") MultipartFile image, @RequestParam("name") String name,
-            @RequestParam("quantity") String quantity, @RequestParam("catégori") String catégori,
+            @RequestParam("quantity") String quantity, @RequestParam("categori") String categori,
             @PathVariable int id) {
 
         String fileName = null;
         try {
-            fileName = this.produitSrevice.updateImage(path, image, name, quantity, catégori, id);
+            fileName = this.produitSrevice.updateImage(path, image, name, quantity, categori, id);
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(new FileResponse(null, "ERREURR fichier non envoyer"), HttpStatus.OK);
@@ -119,6 +119,15 @@ public class ProduitController {
         return produitSrevice.deleteProduit(id);
 
     }
+
+
+    @GetMapping("/image/{productId}")
+    public ResponseEntity<?> getProductImage(@PathVariable int productId) throws IOException {
+        return produitSrevice.getProductImageById(productId);
+    }
+
+
+    
 
 }
 /*

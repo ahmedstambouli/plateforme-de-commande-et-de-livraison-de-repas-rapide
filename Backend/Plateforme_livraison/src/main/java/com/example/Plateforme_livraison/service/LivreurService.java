@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.Plateforme_livraison.Models.Role;
 import com.example.Plateforme_livraison.Models.User;
 import com.example.Plateforme_livraison.repository.UserRepository;
 
@@ -24,7 +25,7 @@ public class LivreurService {
     }
 
     public List<User> getAllLivreurs() {
-        return userRepository.findByRole("livreur");
+        return userRepository.findAllByRole(Role.LIVREUR);
     }
 
     public Optional<User> getLivreurById(Integer id) {

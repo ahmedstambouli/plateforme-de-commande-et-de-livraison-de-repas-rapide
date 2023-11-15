@@ -1,6 +1,6 @@
 <div class="blocknavbar">
 
-  <input type="submit" value="disconnect"  name="disconnect" id="btndisconnect" >
+  <input type="submit" value="disconnect"  name="disconnect" id="btndisconnect" (click)="logout()">
   <input type="reset" value="disable"  id="btndisable">
 </div>
 <div class="container">
@@ -10,18 +10,23 @@
 <div class="block">
   <div class="row">
     <div class="col-8">
+      <form [formGroup]="registerForm">
       <div class="blockinput">
         <h2>Update Profil</h2>
         <div class="row">
           <div class="col">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" >
+              <input type="text" class="form-control" id="floatingInput"  formControlName="name" [(ngModel)]="objpart.name" >
+              <div class="text-rouge" *ngIf="registerForm.get('name')!.hasError('required')">
+                Champ de name requis.
+              </div>
+
               <label for="floatingInput"> Name Company </label>
             </div>
           </div>
           <div class="col">
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email" [(ngModel)]="objpart.email">
               <label for="floatingInput">Email address</label>
             </div>
           </div>
@@ -30,13 +35,13 @@
         <div class="row">
           <div class="col">
             <div class="form-floating mb-3">
-              <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="password"   >
               <label for="floatingInput">Password</label>
             </div>
           </div>
           <div class="col">
             <div class="form-floating mb-3">
-              <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com" >
+              <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="tel"  [(ngModel)]="objpart.tel">
               <label for="floatingInput">Phone Number</label>
             </div>
           </div>
@@ -44,22 +49,23 @@
         <div class="row">
           <div class="col">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="adresse"  [(ngModel)]="objpart.adresse">
               <label for="floatingInput">Address</label>
             </div>
           </div>
           <div class="col">
             <div class="form-floating mb-3">
-              <input type="file" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="logo"  [(ngModel)]="objpart.logo">
               <label for="floatingInput">Logo</label>
             </div>
           </div>
         </div>
         <div class="blockbutton">
-          <input type="submit" value="update" class="btn" name="update" >
+          <input type="submit" value="update" class="btn" name="update" (click)="updateProfile()">
           <input type="reset" value="cancel" class="btnc">
         </div>
       </div>
+    </form>
     </div>
     <div class="col">
       <div class="blockprofil">
@@ -68,10 +74,10 @@
       <img src="../../../assets/img/366591433_6670612032996080_6020412681037704020_n.jpg" alt="" class="picture">
 
       <div class="information">
-        <p><span style="font-weight: bold;">Name :</span>aa</p>
-        <p><span style="font-weight: bold;">Email :</span>ahmed.saatambouligmail.comaaaa </p>
-        <p><span style="font-weight: bold;">phone number :</span>+21953804490</p>
-        <p class="bottom"><span style="font-weight: bold;" >address:</span>Rue med ali baaaaaaaaaaaaaaaaalnco ghar el melaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
+        <p><span style="font-weight: bold;">Name :</span>{{objpart.name}}</p>
+        <p><span style="font-weight: bold;">Email :</span>{{objpart.email}} </p>
+        <p><span style="font-weight: bold;">phone number :</span>{{objpart.tel}}</p>
+        <p class="bottom"><span style="font-weight: bold;" >address:</span>{{objpart.adresse}}</p>
 
 
       </div>

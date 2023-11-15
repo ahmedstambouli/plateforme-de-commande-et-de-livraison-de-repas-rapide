@@ -114,6 +114,19 @@ public class ParteanireController {
 
     }
 
+    @PutMapping("/updatepartenairesonpassword/{id}")
+    public ResponseEntity<String> updatePartenairesonpassword(@RequestBody Partenaire partenaire, @PathVariable Long id) {
+        try {
+
+            return partenaireService.updatePartnairesonpassword(partenaire, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
+
+
     @DeleteMapping("/deletePartenaire/{id}")
     public ResponseEntity<String> deletePartenaire(@PathVariable Long id) {
         return partenaireService.deletePartenaire(id);
