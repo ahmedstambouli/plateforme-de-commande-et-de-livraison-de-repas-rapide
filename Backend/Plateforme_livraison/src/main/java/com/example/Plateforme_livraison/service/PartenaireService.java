@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.Plateforme_livraison.Models.Partenaire;
-
+import com.example.Plateforme_livraison.Models.User;
 import com.example.Plateforme_livraison.repository.PartenaireRepository;
 
 @Service
@@ -117,7 +117,33 @@ public class PartenaireService implements PartenaireServiceInterface {
 
     }
 
-   
+    
+    public Partenaire blockPartenaire(Long id) throws Exception {
+        Optional<Partenaire> optional = partenaireRepository.findById(id);
+    
+        if (optional.isPresent()) {
+            Partenaire part = optional.get();
+            part.setEtat( 0L);
+            partenaireRepository.save(part);
+            return part;
+        } else {
+            throw new Exception("Partenaire not found with ID: " + id);
+        }
+    }
+    
+
+     public Partenaire deblockPartenaire(Long id) throws Exception {
+        Optional<Partenaire> optional = partenaireRepository.findById(id);
+    
+        if (optional.isPresent()) {
+            Partenaire part = optional.get();
+            part.setEtat( 1L);
+            partenaireRepository.save(part);
+            return part;
+        } else {
+            throw new Exception("Partenaire not found with ID: " + id);
+        }
+    }
 
 
 @Override

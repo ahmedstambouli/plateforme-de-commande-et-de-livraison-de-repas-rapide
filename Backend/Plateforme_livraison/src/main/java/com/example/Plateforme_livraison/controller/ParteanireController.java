@@ -25,6 +25,7 @@ import com.example.Plateforme_livraison.service.UserRegistrationException;
 import jakarta.validation.Valid;
 
 import com.example.Plateforme_livraison.Models.Partenaire;
+import com.example.Plateforme_livraison.Models.User;
 import com.example.Plateforme_livraison.repository.PartenaireRepository;
 
 @RestController
@@ -144,5 +145,17 @@ public class ParteanireController {
             return message;
         }
     }
+
+
+    @PutMapping("/block/{id}")
+    public Partenaire blockPartenaire(@PathVariable Long id) throws Exception {
+        return partenaireService.blockPartenaire(id);
+    } 
+
+     @PutMapping("/deblock/{id}")
+    public Partenaire deblockPartenaire(@PathVariable Long id) throws Exception {
+        return partenaireService.deblockPartenaire(id);
+    }
+
 
 }

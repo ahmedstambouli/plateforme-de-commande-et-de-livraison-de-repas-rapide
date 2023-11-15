@@ -51,7 +51,7 @@ export class NewDeliveryPersonComponent {
     this.submitted = true;
   
     if (this.deliveryPersonForm.valid) {
-      this.user.role = 'livreur';
+      this.user.role = 'LIVREUR';
       this.user.etat = 1;
   
       this.LivreurServ.createNewLivreur(this.user).subscribe(

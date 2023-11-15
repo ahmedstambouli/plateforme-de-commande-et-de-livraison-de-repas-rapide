@@ -7,5 +7,6 @@ export class User{
         address!:string;
         tel!:string;
         etat!:Number;
+
     
 }
