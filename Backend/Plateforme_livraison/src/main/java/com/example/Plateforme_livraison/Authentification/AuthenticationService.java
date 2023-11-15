@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -67,7 +66,7 @@ public class AuthenticationService {
         
         return ResponseEntity.ok().body(AuthenticationResponse.builder()
             .token(jwtToken)
-            .user(savedUser)
+           // .user(savedUser)
             .build());
     } else {
         return API.getResponseEntity("email already exists", HttpStatus.BAD_REQUEST);
@@ -103,7 +102,7 @@ public class AuthenticationService {
                 saveUserToken(user, jwtToken);
                 return ResponseEntity.ok(AuthenticationResponse.builder()
                         .token(jwtToken)
-                        .user(user)
+                 //       .user(user)
                         .build());
             } else {
                 return ResponseEntity.badRequest().body("Account is expired");
