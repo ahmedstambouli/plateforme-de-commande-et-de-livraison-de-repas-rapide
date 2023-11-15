@@ -63,6 +63,8 @@ public class Partenaire {
     @NotBlank(message = "logo is required")
     private String logo;
 
+    private Long etat;
+
 /* 
     @OneToMany(targetEntity = Produit.class, cascade = CascadeType.ALL)
     private List<Produit> produits; 

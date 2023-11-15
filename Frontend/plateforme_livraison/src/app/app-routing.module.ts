@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SingInComponent } from './sing-in/sing-in.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
+import { UpdatePartenaireComponent } from './Admin/Partner/update-partenaire/update-partenaire.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
 
   { path: 'singin', component:SingInComponent},
   { path: 'signup',component:SingUpComponent},
+
   
 ];
 
