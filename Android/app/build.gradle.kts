@@ -44,5 +44,10 @@ dependencies {
     implementation ("io.jsonwebtoken:jjwt-api:0.11.2")
     implementation ("io.jsonwebtoken:jjwt-impl:0.11.2")
     implementation ("io.jsonwebtoken:jjwt-jackson:0.11.2")
+    implementation ("com.google.android.material:material:1.9.0-rc01")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+        implementation ("com.google.code.gson:gson:2.10.1")
+
+
 
 }
