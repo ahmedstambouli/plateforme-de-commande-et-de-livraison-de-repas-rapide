@@ -39,10 +39,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (!ConnectivityUtils.isConnectedToInternet(this)) {
+            Intent intent = new Intent(this, noInternet.class);
+            startActivity(intent);
+
+        }
         Button btn = findViewById(R.id.com);
         password=findViewById(R.id.login_pwd);
         email=findViewById(R.id.login);
         signin=findViewById(R.id.signinbtn);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

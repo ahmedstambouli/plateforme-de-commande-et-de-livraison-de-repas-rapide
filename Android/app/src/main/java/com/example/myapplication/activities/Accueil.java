@@ -14,7 +14,11 @@ public class Accueil extends AppCompatActivity {
   Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (!ConnectivityUtils.isConnectedToInternet(this)) {
+            Intent intent = new Intent(this, noInternet.class);
+            startActivity(intent);
 
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
