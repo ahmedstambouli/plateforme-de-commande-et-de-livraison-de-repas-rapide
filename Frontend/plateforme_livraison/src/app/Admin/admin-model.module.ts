@@ -7,8 +7,11 @@ import { DeliveryPersonComponent } from './delivery-person/delivery-person.compo
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { LivreurPipePipe } from '../Pipes/livreur-pipe.pipe';
 import { NewDeliveryPersonComponent } from './new-delivery-person/new-delivery-person.component';
+import { AuthAdminComponent } from './auth-admin/auth-admin.component';
 
 const routes:Routes=[
+  {path:"admin" , component:  AuthAdminComponent},
+
 
   {path:"HomeAdmin" , component:HomeAdminComponent,children:
   [
@@ -24,7 +27,8 @@ const routes:Routes=[
     SideBarAdminComponent,
     DeliveryPersonComponent,
     LivreurPipePipe,
-    NewDeliveryPersonComponent
+    NewDeliveryPersonComponent,
+    AuthAdminComponent
   ],
   imports: [
     CommonModule,

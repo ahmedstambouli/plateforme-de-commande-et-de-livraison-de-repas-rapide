@@ -1,0 +1,22 @@
+button{
+    background-color: #ff6f00;
+}
+.is-invalid {
+    border: 1px solid red !important;
+    background-color: #ffeeee;
+    color: red;
+
+  }
+  .is-valid{
+    border: 1px solid !important;
+    background-color:rgb(217, 246, 217);
+    border-color: green !important;
+  }
+.alert {
+text-align: center;
+align-items: center;
+  border: 1px solid #d9534f;
+  border-radius: 4px;
+  color: #a94442;
+  background-color: #f2dede;
+}

@@ -5,16 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SingInComponent } from './sing-in/sing-in.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
-<<<<<<< HEAD
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-=======
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingPartenaireModule } from './Partenaire/app-routing-partenaire.module'
 
 import { AdminModelModule } from './Admin/admin-model.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +20,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 
 
->>>>>>> 6d9d40dc9fbfc36fd49ea54ef8ac385d8b14697f
 
 @NgModule({
   declarations: [
@@ -42,8 +36,6 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-<<<<<<< HEAD
-=======
     AppRoutingPartenaireModule,
 
     AdminModelModule,
@@ -54,7 +46,6 @@ import { ToastrModule } from 'ngx-toastr';
 
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
->>>>>>> 6d9d40dc9fbfc36fd49ea54ef8ac385d8b14697f
 
   ],
 
