@@ -36,8 +36,10 @@ export class SingInComponent implements OnInit {
         console.log(obj.id)
         if(obj!=null){
           localStorage.setItem("partenaire",JSON.stringify(obj));
+         
           window.location.href='/home'
         }
+      
         },
         error:(err:any)=>
         {

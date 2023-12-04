@@ -1,28 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .center-image {
+            text-align: center;
+        }
+
+        .logo-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .mt-5 {
+            margin-top: 5px;
+        }
+
+        .login-box {
+            margin-top: 20px;
+        }
+
+        .pt {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .links {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .buttom {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
 <div class="container">
     <div class="row">
-        <div class="logo-container col-6">
+        <div class="logo-container col-md-6">
             <div class="center-image">
-                <img class="logo-image" src="assets/image/tiktak.png">
-             </div>
+                <img class="logo-image" src="assets/image/tiktak.png" alt="Logo">
+            </div>
         </div>
-        <div class=" col-6">
-                <div class="form-group1 d-flex">
-                    <button class="buttom1 mt-5"   routerLink="/singin" type="submit">Sign In</button>
-                    <button class="buttom1 mt-5" routerLink="/signup" type="submit">Sign up</button>
+        <div class="col-md-6">
+            <div class="form-group1 d-flex">
+                <button class="buttom1 mt-5" routerLink="/singin" type="submit">Sign In</button>
+                <button class="buttom1 mt-5" routerLink="/signup" type="submit">Sign up</button>
             </div>
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-box">
                 <div class="form-group">
-                    <img class="pt" src="assets/image/petit.png">
+                    <img class="pt" src="assets/image/petit.png" alt="Petit Image">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input formControlName="Email" [ngClass]="{'is-invalid': submitted && registerForm.controls['Email'].errors ,'is-valid': submitted && !registerForm.controls['Email'].errors}" type="email" id="email" placeholder="Enter your email" >
+                    <input formControlName="Email" [ngClass]="{'is-invalid': submitted && registerForm.controls['Email'].errors ,'is-valid': submitted && !registerForm.controls['Email'].errors}" type="email" id="email" placeholder="Enter your email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input formControlName="Password" [ngClass]="{'is-invalid': submitted && registerForm.controls['Password'].errors ,'is-valid': submitted && !registerForm.controls['Password'].errors}" type="password" id="password" placeholder="Password" >
+                    <input formControlName="Password" [ngClass]="{'is-invalid': submitted && registerForm.controls['Password'].errors ,'is-valid': submitted && !registerForm.controls['Password'].errors}" type="password" id="password" placeholder="Password">
                 </div>
-                <a class="links " routerLink="/signup"> you d'ont have an account?</a>
+                <a class="links" routerLink="/signup">Don't have an account?</a>
                 <div class="form-group">
                     <button class="buttom" type="submit">Sign In</button>
                 </div>
@@ -31,3 +72,5 @@
     </div>
 </div>
 
+</body>
+</html>

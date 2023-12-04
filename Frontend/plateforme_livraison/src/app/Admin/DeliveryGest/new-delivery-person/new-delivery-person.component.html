@@ -27,7 +27,7 @@
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" [(ngModel)]="user.password" name="password" required  formControlName="password" [ngClass]="{'is-invalid': submitted && deliveryPersonForm.controls['password'].errors ,'is-valid': submitted && !deliveryPersonForm.controls['password'].errors}">
+            <input type="password" placeholder="Enter your password" [(ngModel)]="user.password" name="password" required  formControlName="password" [ngClass]="{'is-invalid': submitted && deliveryPersonForm.controls['password'].errors ,'is-valid': submitted && !deliveryPersonForm.controls['password'].errors}">
           </div>
         </div>
   
