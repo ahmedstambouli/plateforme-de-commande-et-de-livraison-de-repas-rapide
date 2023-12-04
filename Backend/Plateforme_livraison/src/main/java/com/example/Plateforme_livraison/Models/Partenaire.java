@@ -1,15 +1,14 @@
 package com.example.Plateforme_livraison.Models;
 
-import java.util.*;
+import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.CascadeType;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
@@ -40,11 +39,10 @@ public class Partenaire {
 
 
     @NotBlank(message = "email is required")
-    @Email(message = "invalid email format")
     private String email;
 
 
-    @NotBlank(message = " is required")
+    @NotBlank(message = "password is required")
     @Size(min=8, message=" must be at least 8 characters long.")
     private String password;
 
@@ -54,7 +52,6 @@ public class Partenaire {
 
 
     @NotBlank(message = "Adresse is required")
-    @Length(min =3 )
     private String adresse;
 
     @NotBlank(message = "role is required")
@@ -64,11 +61,13 @@ public class Partenaire {
     private String logo;
 
     private Long etat;
+    
+    private String type;
 
-/* 
+
     @OneToMany(targetEntity = Produit.class, cascade = CascadeType.ALL)
     private List<Produit> produits; 
-*/
+
 
 
 }

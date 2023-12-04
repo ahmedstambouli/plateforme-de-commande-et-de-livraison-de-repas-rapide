@@ -22,6 +22,10 @@ export class ProfilePartenaireComponent implements OnInit {
   registerForm!: FormGroup;
   parte: Partenaire = new Partenaire();
   passwordpartenaire: string[] = [];
+  productImageUrl!: string;
+  selectedFile: any;
+  formadata: FormData = new FormData();
+  formadatap: FormData = new FormData();
 
   ngOnInit() {
     this.obj = localStorage.getItem('partenaire');
@@ -36,15 +40,25 @@ export class ProfilePartenaireComponent implements OnInit {
       tel: ['', Validators.required],
       logo: ['', Validators.required],
       password: ['', Validators.required],
+      type: ['', Validators.required],
     });
+
+    this.getimage(this.id);
   }
 
-  getPartenair() {
-    //console.log(this.id);
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
+  }
 
+
+
+
+  getPartenair() {
     this.service.getPartenaireparId(this.id).subscribe({
       next: (response) => {
         this.objpart = response;
+        console.log(this.objpart);
+
         this.passwordpartenaire = this.objpart.password;
         console.log(this.passwordpartenaire);
       },
@@ -52,60 +66,108 @@ export class ProfilePartenaireComponent implements OnInit {
     });
   }
 
+
+
+
   updateProfile() {
     let pass = this.registerForm.value.password;
+        //   //avec password
+      this.formadatap.append('idp', this.id);
+      this.formadatap.append('name', this.parte.name);
+      this.formadatap.append('email', this.registerForm.value.email);
+      this.formadatap.append('tel', this.registerForm.value.tel);
+      this.formadatap.append('adresse', this.registerForm.value.adresse);
+      this.formadatap.append('password', this.registerForm.value.password);
+      this.formadatap.append('logo', this.selectedFile);
+      this.formadatap.append('type', this.registerForm.value.type);
+      this.formadatap.append('etat', '1');
+      this.formadatap.append('role', 'partenaire');
+console.log(      this.formadatap.get("logo")
+);
+
     //console.log(this.passwordpartenaire)
 
-    if (this.registerForm.value.password === '') {
-      this.parte.name = this.registerForm.value.name;
-      this.parte.email = this.registerForm.value.email;
-      this.parte.tel = this.registerForm.value.tel;
-      this.parte.adresse = this.registerForm.value.adresse;
-      this.parte.logo = this.registerForm.value.logo;
-      this.parte.role = 'partenaire';
-      console.log(this.parte);
-      console.log('vide');
+    // if (this.registerForm.value.password === '') {
+    //   //sons password
+    //   this.formadata.append('name', this.parte.name);
+    //   this.formadata.append('email', this.registerForm.value.email);
+    //   this.formadata.append('tel', this.registerForm.value.tel);
+    //   this.formadata.append('adresse', this.registerForm.value.adresse);
+    //   this.formadata.append('logo', this.selectedFile);
+    //   this.formadata.append('type', this.registerForm.value.type);
+    //   this.formadata.append('etat', '1');
+    //   this.formadata.append('role', 'partenaire');
+    //   this.formadatap.get("type");
 
-      this.service.updatePartenairesonpassword(this.parte, this.id).subscribe({
-        next: (data) => {
-          alert('Modification effectuée avec succés');
-          window.location.reload();
+
+      // this.service
+      //   .updatePartenairesonpassword(this.formadata,this.id)
+      //   .subscribe({
+      //     next: (data) => {
+      //       alert('Modification effectuée avec succés');
+      //       window.location.reload();
+      //     },
+      //     error: (err) => {
+      //       console.log(err);
+
+      //       if (err.status == 202) {
+      //         this.toast.success('modification effectuée avec succés');
+      //       } else {
+      //         this.toast.error('vérifier');
+      //       }
+      //     },
+      //   });
+    // } else {
+    //   //avec password
+    //   this.formadatap.append('idp', this.id);
+    //   this.formadatap.append('name', this.parte.name);
+    //   this.formadatap.append('email', this.registerForm.value.email);
+    //   this.formadatap.append('tel', this.registerForm.value.tel);
+    //   this.formadatap.append('adresse', this.registerForm.value.adresse);
+    //   this.formadatap.append('password', this.registerForm.value.password);
+    //   this.formadatap.append('logo', this.selectedFile);
+    //   this.formadatap.append('type', this.registerForm.value.type);
+    //   this.formadatap.append('etat', '1');
+    //   this.formadatap.append('role', 'partenaire');
+    //   this.formadatap.get("logo");
+
+      // this.service.updatePartenaire(this.formadatap, this.id).subscribe({
+      //   next: (response) => {
+      //     alert('modification effectuée avec succés');
+      //     //window.location.reload();
+      //   },
+      //   error: (err) => {
+      //     console.log(err)
+      //     if (err.status == 202) {
+      //       this.toast.success('modification effectuée avec succés');
+      //     } else {
+      //       this.toast.error('erreur de modification');
+      //     }
+      //   },
+      // });
+   // }
+  }
+
+  async getimage(idpart: any): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      this.service.getimagepartenaire(idpart).subscribe(
+        (response) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            this.productImageUrl = reader.result as string;
+            resolve(this.productImageUrl);
+          };
+          reader.readAsDataURL(response);
         },
-        error: (err) => {
-          if (err.status == 202) {
-            this.toast.success('modification effectuée avec succés');
-          } else {
-            this.toast.error('vérifier');
-          }
-        },
-      });
-    } else {
-      this.parte.name = this.registerForm.value.name;
-      this.parte.email = this.registerForm.value.email;
-      this.parte.tel = this.registerForm.value.tel;
-      this.parte.adresse = this.registerForm.value.adresse;
-      this.parte.password = pass;
-      this.parte.logo = this.registerForm.value.logo;
-      this.parte.role = 'partenaire';
-      console.log(this.parte);
-      console.log('not vide');
-       this.service.updatePartenaire(this.parte, this.id).subscribe({
-      next: (response) => {
-        alert('modification effectuée avec succés');
-        //window.location.reload();
-      },
-      error: (err) => {
-        //console.log(err)
-        if (err.status == 202) {
-          this.toast.success('modification effectuée avec succés');
-        } else {
-          this.toast.error('erreur de modification');
+        (error) => {
+          console.error(
+            'Erreur lors de la récupération de image du produit',
+            error
+          );
+          reject(error);
         }
-      },
+      );
     });
-    }
-
-
   }
 
   logout() {

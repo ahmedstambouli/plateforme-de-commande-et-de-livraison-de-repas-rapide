@@ -36,7 +36,10 @@ public class Sign_up extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
+        if (!ConnectivityUtils.isConnectedToInternet(this)) {
+            Intent intent = new Intent(this, noInternet.class);
+            startActivity(intent);
+        }
 
 
         Button btn = findViewById(R.id.signup);

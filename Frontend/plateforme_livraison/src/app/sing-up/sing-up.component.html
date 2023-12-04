@@ -50,32 +50,46 @@
                     <button class="buttom1 mt-5"  routerLink="/singin" type="submit">Sign In</button>
                     <button class="buttom1 mt-5" routerLink="/signup" type="submit">Sign up</button>
             </div>
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-box">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-box" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <img  class="pt" src="assets/image/petit.png">
                 </div>
                 <div class="form-group">
                     <label for="text">Name</label>
-                    <input formControlName="Name" [ngClass]="{'is-invalid': submitted && registerForm.controls['Name'].errors ,'is-valid': submitted && !registerForm.controls['Name'].errors}" type="text" id="text" placeholder="Name">
+                    <input formControlName="Name"  type="text" id="text" placeholder="Name">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input formControlName="Email" [ngClass]="{'is-invalid': submitted && registerForm.controls['Email'].errors ,'is-valid': submitted && !registerForm.controls['Email'].errors}" type="email" id="email" placeholder="Enter your email" >
+                    <label for="Email">Email</label>
+                    <input formControlName="Email"  type="email" id="email" placeholder="Enter your email" >
                 </div>
                 <div class="form-group">
                     <label for="number">phone Number</label>
-                    <input formControlName="Phone" [ngClass]="{'is-invalid': submitted && registerForm.controls['Phone'].errors ,'is-valid': submitted && !registerForm.controls['Phone'].errors}" type="number" id="number" placeholder="Phone Number" >
+                    <input formControlName="Phone"  type="number" id="number" placeholder="Phone Number" >
                 </div>
                   <div class="form-group">
                     <label for="adresse">adresse</label>
-                    <input formControlName="Adresse" [ngClass]="{'is-invalid': submitted && registerForm.controls['Adresse'].errors ,'is-valid': submitted && !registerForm.controls['Adresse'].errors}" type="text" id="adresse" placeholder="Adresse" >
+                    <input formControlName="Adresse"  type="text" id="adresse" placeholder="Adresse" >
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input formControlName="Password" [ngClass]="{'is-invalid': submitted && registerForm.controls['Password'].errors ,'is-valid': submitted && !registerForm.controls['Password'].errors}" type="password" id="password" placeholder="Password"  >
+                    <input formControlName="Password"  type="password" id="password" placeholder="Password"  >
+                </div>
+
+
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">type of partenaire</label>
+                <select class="form-select"id="inputGroupSelect01" formControlName="type" >
+                  <option value="Restaurant">Restaurant</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="inputGroupFile01">Upload your Logo</label>
+                  <input type="file" formControlName="logo" class="form-control" id="inputGroupFile01"  (change)="onFileSelected($event)">
                 </div>
 
 

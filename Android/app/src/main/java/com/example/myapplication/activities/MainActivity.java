@@ -16,7 +16,6 @@ import com.example.myapplication.interfaces.UserInt;
 import com.example.myapplication.models.JwtUtils;
 import com.example.myapplication.models.LoginRequest;
 import com.example.myapplication.models.LoginResponse;
-import com.example.myapplication.models.User;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -33,14 +32,23 @@ public class MainActivity extends AppCompatActivity {
    EditText email;
    EditText password;
    Button signin;
+   String role;
+    String etat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn = findViewById(R.id.signup);
+        if (!ConnectivityUtils.isConnectedToInternet(this)) {
+            Intent intent = new Intent(this, noInternet.class);
+            startActivity(intent);
+
+        }
+        Button btn = findViewById(R.id.com);
         password=findViewById(R.id.login_pwd);
         email=findViewById(R.id.login);
         signin=findViewById(R.id.signinbtn);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,14 +96,31 @@ public class MainActivity extends AppCompatActivity {
                         String key = entry.getKey();
                         Object value = entry.getValue();
                         Log.e("LoginSuccess", "Claim: " + key + " - Value: " + value);
+
+
                     }
+                    role = claims.get("role").toString();
+                    etat= claims.get("etat").toString();
+
+                    if(etat.equals("1")){
+
+
+                        if(role.equals("USER")){
+                            Intent i = new Intent(MainActivity.this, home.class);  // Replace YourActivity with the appropriate activity
+                            startActivity(i);
+                        } else if (role.equals("LIVREUR")) {
+                            Intent i = new Intent(MainActivity.this, livreurhome.class);  // Replace YourActivity with the appropriate activity
+                            startActivity(i);
+                        }
+
+                    }else{
+                        showToast("AcountBlocked please contact administration");
+                           return;
+                    }
+                    Log.e("LoginSuccess", "Claim: " + role +"etat="+etat);
+
 
                     showToast("Login successful");
-
-                    // You can do additional handling for a successful login, such as storing user data
-
-                    Intent i = new Intent(MainActivity.this, home.class);
-                    startActivity(i);
                 } else {
                     showToast("Login failed");
                     Log.e("LoginError", "Error code: " + response.code());
