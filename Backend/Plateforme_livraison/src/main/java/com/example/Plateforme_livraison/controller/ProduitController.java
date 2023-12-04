@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,8 @@ import com.example.Plateforme_livraison.Models.Partenaire;
 import com.example.Plateforme_livraison.Models.Produit;
 import com.example.Plateforme_livraison.playload.FileResponse;
 import com.example.Plateforme_livraison.service.ProduitSrevice;
+
+import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -39,13 +42,15 @@ public class ProduitController {
 
     @RequestMapping(value = "/AddProduit", method = RequestMethod.POST, headers = "accept=Application/json")
     public ResponseEntity<FileResponse> fileUpload(
-            @RequestParam("image") MultipartFile image, @RequestParam("name") String name,
-            @RequestParam("quantity") String quantity, @RequestParam("categori") String categori,
-            @RequestParam("idp") Partenaire pa) {
+        @Valid
+            @RequestParam("image") MultipartFile image,   @Valid @RequestParam("name") String name,
+             @Valid @RequestParam("quantity") String quantity,  @Valid @RequestParam("categori") String categori,
+             @Valid @RequestParam("price") double price,
+             @Valid @RequestParam("idp") Partenaire pa) {
 
         String fileName = null;
         try {
-            fileName = this.produitSrevice.uploadImage(path, image, name, quantity, categori, pa);
+            fileName = this.produitSrevice.AddProducts(path, image, name, quantity, categori,price, pa);
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(new FileResponse(null, "ERREURR fichier non envoyer"), HttpStatus.OK);
@@ -59,11 +64,12 @@ public class ProduitController {
     public ResponseEntity<?> UpdateProduit(
             @RequestParam("image") MultipartFile image, @RequestParam("name") String name,
             @RequestParam("quantity") String quantity, @RequestParam("categori") String categori,
+            @RequestParam("price") double price,
             @PathVariable int id) {
 
         String fileName = null;
         try {
-            fileName = this.produitSrevice.updateImage(path, image, name, quantity, categori, id);
+            fileName = this.produitSrevice.updateImage(path, image, name, quantity, categori,price ,id);
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(new FileResponse(null, "ERREURR fichier non envoyer"), HttpStatus.OK);
@@ -89,7 +95,7 @@ public class ProduitController {
 
     // cette methode get un Produit avec id
     @GetMapping("/Produitid/{id}")
-    public ResponseEntity<Produit> getPartenaireById(@PathVariable int id) {
+    public ResponseEntity<Produit> getProduitById(@PathVariable int id) {
 
         try {
             return produitSrevice.getProduitById(id);
@@ -102,15 +108,17 @@ public class ProduitController {
     }
 
     // cette methode get un Produit avec id de partenaire
-    @GetMapping("/byPartenaire/{Idp}")
-    public ResponseEntity<?> getProduitsByPartenaireId(@PathVariable int Idp) {
-        try {
-            return produitSrevice.getProduitByIdPartenaire(Idp);
+    @GetMapping("/byPartenaire/{p}")
+    public List<Produit> getProduitsByPartenaireId(@PathVariable Partenaire p) {
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(new Produit(), HttpStatus.INTERNAL_SERVER_ERROR);
+         return produitSrevice.getProduitByIdPartenaire(p);
+        // try {
+        //     return produitSrevice.getProduitByIdPartenaire(Idp);
+
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
+        // return new ResponseEntity<>(new Produit(), HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 

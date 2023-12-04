@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.apache.tomcat.util.file.ConfigurationSource.Resource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,24 +20,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.Plateforme_livraison.Models.Partenaire;
 import com.example.Plateforme_livraison.Models.Produit;
+import com.example.Plateforme_livraison.repository.PartenaireRepository;
 import com.example.Plateforme_livraison.repository.ProduitRepository;
 import org.springframework.http.MediaType;
-
-
 
 @Service
 public class ProduitSrevice {
 
-
     private final ProduitRepository produitRepository;
+    private final PartenaireRepository partenaireRepository;
 
-    
-
-    public ProduitSrevice(ProduitRepository produitRepository) {
+    public ProduitSrevice(ProduitRepository produitRepository,PartenaireRepository partenaireRepository) {
         this.produitRepository = produitRepository;
-    }
+        this.partenaireRepository = partenaireRepository;
 
-    
+    }
 
     public ResponseEntity<List<Produit>> getAllProduits() {
 
@@ -52,8 +48,8 @@ public class ProduitSrevice {
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-
-    public String uploadImage(String path, MultipartFile file,String nom,String quantity,String categori,Partenaire pa) throws IOException {
+    public String AddProducts(String path, MultipartFile file, String nom, String quantity, String categori,
+            double price, Partenaire pa) throws IOException {
         String name = file.getOriginalFilename();
 
         // Générer un nom de fichier aléatoire
@@ -78,48 +74,49 @@ public class ProduitSrevice {
         uploadedFile.setName(nom);
         uploadedFile.setCategori(categori);
         uploadedFile.setQuantity(quantity);
+        uploadedFile.setPrice(price);
         uploadedFile.setPartenaire(pa);
         produitRepository.save(uploadedFile);
         return fileName;
     }
 
-
-    public String updateImage(String path, MultipartFile newImage, String nom, String quantity, String categori, int produitId) throws IOException {
+    public String updateImage(String path, MultipartFile newImage, String nom, String quantity, String categori,
+            double price, int produitId) throws IOException {
         Optional<Produit> existingProduitOptional = produitRepository.findById(produitId);
-    
+
         if (existingProduitOptional.isPresent()) {
             Produit existingProduit = existingProduitOptional.get();
-    
+
             // Delete the old image if needed
             if (existingProduit.getFileName() != null) {
                 Files.deleteIfExists(Paths.get(path + File.separator + existingProduit.getFileName()));
             }
-    
+
             String name = newImage.getOriginalFilename();
             String randomID = UUID.randomUUID().toString();
             String fileName = randomID.concat(name.substring(name.lastIndexOf(".")));
             String filePath = path + File.separator + fileName;
-    
+
             File f = new File(path);
             if (!f.exists()) {
                 f.mkdir();
             }
-    
+
             Files.copy(newImage.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
-    
+
             existingProduit.setFileName(fileName);
             existingProduit.setName(nom);
             existingProduit.setCategori(categori);
             existingProduit.setQuantity(quantity);
+            existingProduit.setPrice(price);
             produitRepository.save(existingProduit);
             return fileName;
-            } 
+        }
 
-            return "erreur";
-            
+        return "erreur";
+
     }
-    
-    
+
     public ResponseEntity<Produit> getProduitById(int id) {
         try {
             Produit produit = produitRepository.findById(id).orElse(null);
@@ -136,29 +133,37 @@ public class ProduitSrevice {
         return new ResponseEntity<>(new Produit(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    public List<Produit> getProduitByIdPartenaire(Partenaire partenaire) {
+        
+             return produitRepository.findByPartenaire(partenaire);
+        
 
+    //     Partenaire partenaire = partenaireRepository.findById(id).orElse(null);
+    //   List<Produit> produis=  partenaire.getProduits();
+    //   System.out.println(produis);
+    //            return new ResponseEntity<>(produis, HttpStatus.OK);
 
-    
-      public ResponseEntity<?> getProduitByIdPartenaire(int id) {
-          
-        try {
-        Produit produit = produitRepository.findById(id).orElse(null);
-          long idpartenaire=produit.getPartenaire().getId();
-          List<Produit> produits = produitRepository.findByPartenaireId(idpartenaire);
+        
+        //return null;
+        // try {
+        // Produit produit = produitRepository.findById(id).orElse(null);
+        // long idpartenaire = produit.getPartenaire().getId();
+        // List<Produit> produits = produitRepository.findByPartenaireId(idpartenaire);
+        // System.out.println(produits);
 
-            if (produits == null) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-            return new ResponseEntity<>(produits, HttpStatus.OK);
+        // return new ResponseEntity<>(produits, HttpStatus.OK);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // if (produits == null) {
+        // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        // }
+        // return new ResponseEntity<>(produits, HttpStatus.OK);
 
-        return new ResponseEntity<>(new Produit(), HttpStatus.INTERNAL_SERVER_ERROR);
+        // } catch (Exception e) {
+        // e.printStackTrace();
+        // }
+
+        // return new ResponseEntity<>(new Produit(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    
 
     public ResponseEntity<String> deleteProduit(int id) {
         produitRepository.deleteById(id);
@@ -167,12 +172,8 @@ public class ProduitSrevice {
         return ResponseEntity.noContent().headers(headers).build();
 
     }
-    
 
-
-    
-
-    private String imageDirectoryPath="images/";
+    private String imageDirectoryPath = "images/";
 
     public ResponseEntity<?> getProductImageById(int id) throws IOException {
         Optional<Produit> produitOptional = produitRepository.findById(id);
@@ -184,7 +185,7 @@ public class ProduitSrevice {
             if (fileName != null) {
                 Path filePath = Paths.get(imageDirectoryPath, fileName);
                 File file = filePath.toFile();
-
+                System.out.println(file);
                 if (file.exists()) {
                     InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 
@@ -198,7 +199,5 @@ public class ProduitSrevice {
 
         return ResponseEntity.notFound().build();
     }
-    
-    
 
 }

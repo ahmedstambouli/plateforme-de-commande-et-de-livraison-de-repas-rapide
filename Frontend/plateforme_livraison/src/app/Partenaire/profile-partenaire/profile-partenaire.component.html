@@ -53,11 +53,19 @@
               <label for="floatingInput">Address</label>
             </div>
           </div>
+
           <div class="col">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="logo"  [(ngModel)]="objpart.logo">
+              <input type="file" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="logo"    (change)="onFileSelected($event)">
               <label for="floatingInput">Logo</label>
             </div>
+          </div>
+
+        </div>
+        <div class="col">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" >
+            <label for="floatingInput">Logo</label>
           </div>
         </div>
         <div class="blockbutton">
@@ -71,7 +79,7 @@
       <div class="blockprofil">
         <h4>Profile</h4>
 
-      <img src="../../../assets/img/366591433_6670612032996080_6020412681037704020_n.jpg" alt="" class="picture">
+      <img [src]="productImageUrl" alt="" class="picture">
 
       <div class="information">
         <p><span style="font-weight: bold;">Name :</span>{{objpart.name}}</p>
