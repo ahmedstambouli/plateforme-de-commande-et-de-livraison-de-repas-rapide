@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AppService } from 'src/app/app.service';
+import { ModaladdproductComponent } from './modaladdproduct/modaladdproduct.component';
 
 @Component({
   selector: 'app-products',
@@ -9,12 +11,14 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit{
+
+  constructor(private service:AppService,private formBuilder: FormBuilder,private elRef: ElementRef,public dialog: MatDialog){}
   productImageUrl!: string;
-
-  constructor(private service:AppService,private formBuilder: FormBuilder){}
-
+  dialogRef!: MatDialogRef<ModaladdproductComponent> | null;
   registerForm!: FormGroup;
   formadata:FormData=new FormData();
+  formadataget:FormData=new FormData();
+
   selectedFile: any;
   id:any
   idp:any
@@ -25,12 +29,15 @@ export class ProductsComponent implements OnInit{
   idprod:any
   imageDataUrls: string[] = [];
   getproduit:any
+  div:any;
+  rep:any
 
 
   ngOnInit() {
     this.obj = localStorage.getItem('partenaire')
     this.uti=JSON.parse(this.obj)
      this.id=this.uti.id;
+
       this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       quantity: ['', Validators.required],
@@ -41,9 +48,6 @@ export class ProductsComponent implements OnInit{
     });
 
     this.getproduitparidp()
-    //this.updateproduit()
-    //this.getproduit=JSON.parse('produit')
-    //console.log(this.getproduit);
 
 
   }
@@ -56,6 +60,7 @@ export class ProductsComponent implements OnInit{
 
   }
 
+
  ajouterproduit()
  {
 
@@ -67,7 +72,10 @@ export class ProductsComponent implements OnInit{
 
 this.service.Ajouterproduit(this.formadata).subscribe({
   next:(res)=>{
-    console.log("ajouté")},
+    console.log("ajouté")
+   this.getproduitparidp()
+   this.closeModal()
+  },
 
   error:(err)=>console.error(err),
 })
@@ -94,11 +102,16 @@ this.service.Ajouterproduit(this.formadata).subscribe({
 
  getproduitparidp()
  {
+  console.log(this.uti);
+  this.formadataget.append('id', this.uti.id);
+
+
   this.service.getproduitparidp(this.id).subscribe({
 
     next:(data:any)=>{
 
       this.objprod=data
+      console.log(data)
 
       for (let index = 0; index < this.objprod.length; index++) {
         const element = this.objprod[index];
@@ -118,6 +131,11 @@ this.service.Ajouterproduit(this.formadata).subscribe({
     },
     error:(err)=>{
       console.log(err);
+      if(err.status==500)
+      {
+        console.log("vide");
+
+      }
 
     }
   })
@@ -158,45 +176,41 @@ this.service.Ajouterproduit(this.formadata).subscribe({
 
 
 
-image:any
-  updateproduit()
-  {
-
-
-    if (this.registerForm.value.fileName === '') {
-      console.log('ahmed');
-    }
-
-
-this.formadata.append('name',this.registerForm.value.name)
-this.formadata.append('quantity',this.registerForm.value.quantity)
-this.formadata.append('categori',this.registerForm.value.categori)
-this.formadata.append('image',this.selectedFile)
-
-console.log(this.formadata.get("image"));
 
 
 
+  openModal(): void {
+    const dialogRef = this.dialog.open(ModaladdproductComponent, {
+      width: '50%',
+      // Autres configurations de la modale ici
+    });
 
-
-
-
-this.service.updateproduit(this.produit.id,this.formadata).subscribe({
-  next: (data)=>{
-    console.log(data);
-    alert("Produit modifié avec succés!");
-    window.location.reload();
-    },
-    complete: ()=>{
-      //console.log("complete");
-      },
-      error:(err)=>
-      {
-        console.log(err);
-
-      },
-})
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Modal closed with result: ${result}`);
+      // Traiter le résultat du modal ici si nécessaire
+    });
 
   }
+
+  closeModal(): void {
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    }
+  }
+
+
+
+  deleteP(id:any)
+  {
+    this.service.deleteproduit(id).subscribe({
+      next:(value)=>{
+        alert("suppression avec succes");
+        window.location.reload() ;
+        },
+        error:(e)=>console.log(e),
+
+    })
+  }
+
 
 }

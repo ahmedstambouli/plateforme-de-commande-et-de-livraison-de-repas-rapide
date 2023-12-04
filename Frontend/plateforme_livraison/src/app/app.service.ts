@@ -7,16 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class AppService {
 
-  private URL ="http://localhost:8085/public/Partenaire/"
-  private URLP ="http://localhost:8085/public/Prouit/"
+  private URL ="http://localhost:8084/public/Partenaire/"
+  private URLP ="http://localhost:8084/public/Prouit/"
 
 
   constructor(private http:HttpClient) { }
 
 
-    savePartenaire(partenaire: Object)
+    savePartenaire(data: FormData)
     {
-      return this .http.post(this.URL+"RegisterPartenaire",partenaire);
+      return this .http.post(this.URL+"RegisterPartenaire",data);
     }
 
 
@@ -30,7 +30,7 @@ export class AppService {
     }
 
 
-    updatePartenaire(partenaire:object,id:any)
+    updatePartenaire(partenaire:FormData,id:any)
     {
       return this.http.put(this.URL+"updatepartenaire/"+id,partenaire)
     }
@@ -41,6 +41,12 @@ export class AppService {
 
     loginPartenaire(data: FormData) {
       return this.http.post(this.URL + "login", data);
+    }
+
+    getimagepartenaire(id:any):Observable<Blob>
+    {
+      const urlim=this.URL+"image/"+id;
+      return this.http.get(urlim,{responseType:'blob'})
     }
 
 
@@ -72,6 +78,11 @@ export class AppService {
     updateproduit(id:any,produit:FormData)
     {
       return this.http.put(this.URLP+id+"/UpdateProduit",produit)
+    }
+
+    deleteproduit(id:any)
+    {
+      return this.http.delete(this.URLP+"deleteProduit/"+id)
     }
 
 

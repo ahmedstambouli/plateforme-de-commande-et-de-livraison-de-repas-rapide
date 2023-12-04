@@ -12,7 +12,7 @@ public interface PartenaireServiceInterface {
 
     ResponseEntity<Partenaire> getAllPartenaireById(Long id);
 
-    ResponseEntity<String> updatePartnaire(Partenaire partenaire, Long id);
+    // ResponseEntity<String> updatePartnaire(Partenaire partenaire, Long id);
 
     ResponseEntity<String> updatePartnairesonpassword(Partenaire partenaire, Long id);
 

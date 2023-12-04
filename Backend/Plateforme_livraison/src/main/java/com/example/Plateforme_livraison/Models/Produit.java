@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,10 +42,13 @@ public class Produit {
 
     @NotBlank(message = "is required")  
     private String  categori;
+
+    @DecimalMin(value = "0.0", message = "Price must be greater than or equal to 0.0")
+    private double price;
     
     @ManyToOne
-     @JoinColumn(name = "id_partenaire")
-     private Partenaire partenaire;
+    @JoinColumn(name = "id_partenaire")
+    private Partenaire partenaire;
 
 
 

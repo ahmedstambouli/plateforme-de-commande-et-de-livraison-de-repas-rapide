@@ -8,6 +8,9 @@ import { ProductsComponent } from './products/products.component';
 import { CommandeComponent } from './commande/commande.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { UpdateProductComponent } from './products/update-product/update-product.component';
+import { ModaladdproductComponent } from './products/modaladdproduct/modaladdproduct.component';
+
 
 
 
@@ -17,7 +20,8 @@ const routes:Routes=[
     [
       { path:'ProfilePartenaire', component:ProfilePartenaireComponent},
       {path:'ProductParteniare',component:ProductsComponent},
-      {path:'CommandePartenaire',component:CommandeComponent}
+      {path:'CommandePartenaire',component:CommandeComponent},
+      {path:"update/:id",component:UpdateProductComponent}
 
 
     ]
@@ -31,7 +35,9 @@ const routes:Routes=[
     ProfilePartenaireComponent,
     HomeComponent,
     ProductsComponent,
-    CommandeComponent
+    CommandeComponent,
+    UpdateProductComponent,
+    ModaladdproductComponent
   ],
   imports: [
     CommonModule,

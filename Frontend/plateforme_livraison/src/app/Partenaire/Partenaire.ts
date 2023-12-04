@@ -1,3 +1,5 @@
+
+
 export class PartenaireFORM{
   name!:string
   email!:string
@@ -18,4 +20,5 @@ export class Partenaire{
   logo!:string
   id!: number
   etat!:number;
+  type!:string
 }

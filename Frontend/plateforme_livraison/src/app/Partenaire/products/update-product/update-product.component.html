@@ -1,0 +1,49 @@
+<div class="blocknavbar">
+  <input
+    type="submit"
+    value="disconnect"
+    name="disconnect"
+    id="btndisconnect"
+  />
+  <input type="reset" value="disable" id="btndisable" />
+</div>
+<!-- Update Product Modal -->
+  <form [formGroup]="registerForm">
+  <div class="modal-dialog">
+    <h1>Upadate Product</h1>
+
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="Name" formControlName="name" [ngModel]="produit.name">
+          <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="floatingInput" placeholder="Quantity" formControlName="quantity" [ngModel]="produit.quantity">
+          <label for="floatingInput">Quantity</label>
+        </div>
+
+        <div class="form-floating  mb-3">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="categori" [ngModel]="produit.categori">
+            <option selected>Open this select menu</option>
+            <option value="spicy">spicy </option>
+            <option value="Dessert">Dessert</option>
+            <option value="Other">Other</option>
+          </select>
+          <label for="floatingSelect">Works with selects</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="file" class="form-control" id="floatingInput" placeholder="Picture" formControlName="fileName" [ngModel]="produit.fileName" (change)="onFileSelected($event)">
+          <label for="floatingInput">Picture</label>
+        </div>
+
+      </div>
+
+
+      <div class="modal-footer">
+        <input type="submit" class="btn btn-primary" (click)="updateproduit()" value="Save changes">
+      </div>
+    </div>
+  </div>
+</form>

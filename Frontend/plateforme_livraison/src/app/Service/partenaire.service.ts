@@ -10,7 +10,7 @@ export class PartenaireService {
   constructor(private http:HttpClient) {
   }
 
-  private URL ="http://localhost:8085/public/"
+  private URL ="http://localhost:8084/public/"
 
 
   getAllPartenaire():any{
