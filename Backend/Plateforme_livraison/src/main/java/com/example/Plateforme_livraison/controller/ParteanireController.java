@@ -25,7 +25,6 @@ import com.example.Plateforme_livraison.service.UserRegistrationException;
 import jakarta.validation.Valid;
 
 import com.example.Plateforme_livraison.Models.Partenaire;
-import com.example.Plateforme_livraison.Models.User;
 import com.example.Plateforme_livraison.repository.PartenaireRepository;
 
 @RestController
