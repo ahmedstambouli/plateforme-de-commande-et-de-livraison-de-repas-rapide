@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { HomeAdminComponent } from './DeliveryGest/home-admin/home-admin.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SideBarAdminComponent } from './side-bar-admin/side-bar-admin.component';
-import { DeliveryPersonComponent } from './delivery-person/delivery-person.component';
+import { DeliveryPersonComponent } from './DeliveryGest/delivery-person/delivery-person.component';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { LivreurPipePipe } from '../Pipes/livreur-pipe.pipe';
-import { NewDeliveryPersonComponent } from './new-delivery-person/new-delivery-person.component';
+import { NewDeliveryPersonComponent } from './DeliveryGest/new-delivery-person/new-delivery-person.component';
+import { PartenaireComponent } from './Partner/partenaire/partenaire.component';
+import { UpdatePartenaireComponent } from './Partner/update-partenaire/update-partenaire.component';
+import { ProfileComponent } from './AdminProfile/profile/profile.component';
 import { AuthAdminComponent } from './auth-admin/auth-admin.component';
 
 const routes:Routes=[
@@ -15,7 +18,10 @@ const routes:Routes=[
 
   {path:"HomeAdmin" , component:HomeAdminComponent,children:
   [
-    {path:"DeliveryPerson" , component:DeliveryPersonComponent}
+    {path:"DeliveryPerson" , component:DeliveryPersonComponent},
+    {path:"Partenaire",component:PartenaireComponent},
+    { path:"update_partenaire/:id", component: UpdatePartenaireComponent },
+    {path:"AdminProfile",component:ProfileComponent}
   ]
 },
 ]
@@ -28,7 +34,9 @@ const routes:Routes=[
     DeliveryPersonComponent,
     LivreurPipePipe,
     NewDeliveryPersonComponent,
-    AuthAdminComponent
+    PartenaireComponent,
+    UpdatePartenaireComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

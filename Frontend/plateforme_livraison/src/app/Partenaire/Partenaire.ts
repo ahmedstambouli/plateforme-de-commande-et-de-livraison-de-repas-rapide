@@ -16,4 +16,6 @@ export class Partenaire{
   adresse!:string
   role!:string
   logo!:string
+  id!: number
+  etat!:number;
 }

@@ -42,4 +42,10 @@ public class UserService {
         // You can add more checks and validation logic
         return user != null && user.getName() != null && user.getPassword() != null;
     }
+
+
+    public boolean isEmailAlreadyExists(String email) {
+        return userRepository.findByEmail(email) != null;
+    }
+    
 }

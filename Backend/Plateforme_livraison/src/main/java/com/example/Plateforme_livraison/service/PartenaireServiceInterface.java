@@ -14,6 +14,14 @@ public interface PartenaireServiceInterface {
 
     ResponseEntity<String> updatePartnaire(Partenaire partenaire, Long id);
 
+    ResponseEntity<String> updatePartnairesonpassword(Partenaire partenaire, Long id);
+
+
     ResponseEntity<String> deletePartenaire(Long id);
+
+   
+    ResponseEntity<Partenaire> loginUser(String email,String password);
+
+
 
 }

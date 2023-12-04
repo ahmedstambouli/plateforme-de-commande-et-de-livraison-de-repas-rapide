@@ -33,8 +33,10 @@ export class SingUpComponent implements OnInit {
       Role:[''],
     });
 
-
   }
+
+
+
 
 
 

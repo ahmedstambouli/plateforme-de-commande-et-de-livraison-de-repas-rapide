@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b8a34aa-9c65-4f47-aa34-c3fd51ecf001" name="Changes" comment="" />
+    <list default="true" id="7b8a34aa-9c65-4f47-aa34-c3fd51ecf001" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/activities/Sign_up.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/interfaces/Api.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/interfaces/UserInt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/models/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/models/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/models/RegisterResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/models/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/res/drawable/ic_menu_camera.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/res/drawable/ic_menu_gallery.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/res/drawable/ic_menu_slideshow.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/res/drawable/side_nav_bar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/activities/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/Sign_up.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/example/myapplication/activities/home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_sign_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-anydpi/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/Plateforme_livraison/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Plateforme_livraison/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/Authentification/AuthenticationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/Authentification/AuthenticationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/Authentification/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/Authentification/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/controller/ProduitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Plateforme_livraison/src/main/java/com/example/Plateforme_livraison/controller/ProduitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/Plateforme_livraison/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Plateforme_livraison/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,12 +58,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/dell/Desktop/springs/plateforme-de-commande-et-de-livraison-de-repas-rapide"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

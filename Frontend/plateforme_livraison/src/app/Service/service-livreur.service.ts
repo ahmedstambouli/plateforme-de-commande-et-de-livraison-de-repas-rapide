@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ServiceLivreurService {
-  private URL ="http://localhost:8084/public/"
+  private URL ="http://localhost:8085/public/"
 
   constructor(private http:HttpClient) {
 
@@ -33,5 +33,5 @@ export class ServiceLivreurService {
     deleteLivreur(livreurId: number) {
       return this.http.delete(this.URL + "livreurs/delete/" + livreurId, { responseType: 'text' });
     }
-    
+
 }

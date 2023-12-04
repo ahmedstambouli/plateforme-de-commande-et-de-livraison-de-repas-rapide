@@ -33,7 +33,7 @@ public class Partenaire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotBlank(message = "name is required")
     private String name;
@@ -63,10 +63,12 @@ public class Partenaire {
     @NotBlank(message = "logo is required")
     private String logo;
 
+    private Long etat;
 
+/* 
     @OneToMany(targetEntity = Produit.class, cascade = CascadeType.ALL)
     private List<Produit> produits; 
-
+*/
 
 
 }

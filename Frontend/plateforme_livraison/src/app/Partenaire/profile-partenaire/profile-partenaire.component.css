@@ -1,8 +1,3 @@
-
-
-
-
-
 .block{
   margin-left: 12%;
   margin-top: 8%;
@@ -130,6 +125,10 @@ box-shadow:  5px 5px 10px #d7d7d7,
   margin-left: 3%;
 
 }
+.text-rouge {
+  color: red;
+}
+
 
 
 
@@ -222,24 +221,3 @@ box-shadow:  5px 5px 10px #d7d7d7,
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
